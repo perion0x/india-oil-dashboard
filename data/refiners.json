@@ -1,0 +1,42 @@
+[
+{
+"refiner": "IOC",
+"capacity_mt": 70.25,
+"simple_pct": 2,
+"cracking_pct": 24,
+"full_pct": 75,
+"how_they_buy": "Term contracts with national oil companies, plus spot tenders"
+},
+{
+"refiner": "Reliance",
+"capacity_mt": 68.2,
+"simple_pct": 0,
+"cracking_pct": 0,
+"full_pct": 100,
+"how_they_buy": "In-house trading desk, cargo by cargo"
+},
+{
+"refiner": "BPCL",
+"capacity_mt": 35.3,
+"simple_pct": 34,
+"cracking_pct": 0,
+"full_pct": 66,
+"how_they_buy": "Term contracts plus spot tenders"
+},
+{
+"refiner": "HPCL",
+"capacity_mt": 24.5,
+"simple_pct": 0,
+"cracking_pct": 0,
+"full_pct": 100,
+"how_they_buy": "Term contracts plus spot tenders"
+},
+{
+"refiner": "Nayara",
+"capacity_mt": 20.0,
+"simple_pct": 0,
+"cracking_pct": 0,
+"full_pct": 100,
+"how_they_buy": "Mix of term and spot; part-owned by Rosneft"
+}
+]

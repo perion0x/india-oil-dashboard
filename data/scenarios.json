@@ -1,0 +1,47 @@
+[
+{
+"scenario": "Jul 2026: Russia peak",
+"lpg_kt": 813,
+"petrol_kt": 5920,
+"jet_kt": 3897,
+"diesel_kt": 6952,
+"fuel_oil_kt": 1449,
+"petcoke_kt": 1146
+},
+{
+"scenario": "Sep 2026: actual mix",
+"lpg_kt": 809,
+"petrol_kt": 5953,
+"jet_kt": 3932,
+"diesel_kt": 6951,
+"fuel_oil_kt": 1424,
+"petcoke_kt": 1114
+},
+{
+"scenario": "No Russia, Gulf replaces",
+"lpg_kt": 812,
+"petrol_kt": 6005,
+"jet_kt": 4021,
+"diesel_kt": 6912,
+"fuel_oil_kt": 1370,
+"petcoke_kt": 1075
+},
+{
+"scenario": "No Russia, Atlantic replaces",
+"lpg_kt": 758,
+"petrol_kt": 6239,
+"jet_kt": 4090,
+"diesel_kt": 6986,
+"fuel_oil_kt": 1285,
+"petcoke_kt": 858
+},
+{
+"scenario": "No Russia, half and half",
+"lpg_kt": 785,
+"petrol_kt": 6122,
+"jet_kt": 4055,
+"diesel_kt": 6949,
+"fuel_oil_kt": 1327,
+"petcoke_kt": 966
+}
+]

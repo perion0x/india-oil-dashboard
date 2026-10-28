@@ -1,0 +1,32 @@
+[
+{
+"metric": "Gross domestic production",
+"aug_2025": 2970,
+"aug_2026": 2829
+},
+{
+"metric": "of which ONGC",
+"aug_2025": 1569,
+"aug_2026": 1546
+},
+{
+"metric": "of which private and JV",
+"aug_2025": 1133,
+"aug_2026": 1026
+},
+{
+"metric": "Net production for sale",
+"aug_2025": 2485,
+"aug_2026": 2335
+},
+{
+"metric": "LNG imports",
+"aug_2025": 2912,
+"aug_2026": 2953
+},
+{
+"metric": "Gas available for sale",
+"aug_2025": 5356,
+"aug_2026": 5287
+}
+]

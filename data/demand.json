@@ -1,0 +1,37 @@
+[
+{
+"region": "North",
+"lpg_kt": 10700,
+"petrol_kt": 13381,
+"diesel_kt": 28225,
+"jet_kt": 3305
+},
+{
+"region": "West",
+"lpg_kt": 7510,
+"petrol_kt": 11386,
+"diesel_kt": 27174,
+"jet_kt": 2584
+},
+{
+"region": "South",
+"lpg_kt": 9200,
+"petrol_kt": 13529,
+"diesel_kt": 26202,
+"jet_kt": 2935
+},
+{
+"region": "East",
+"lpg_kt": 5968,
+"petrol_kt": 5148,
+"diesel_kt": 12065,
+"jet_kt": 720
+},
+{
+"region": "North East",
+"lpg_kt": 978,
+"petrol_kt": 1433,
+"diesel_kt": 2703,
+"jet_kt": 200
+}
+]

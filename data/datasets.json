@@ -1,0 +1,87 @@
+{
+ "params": {
+  "scenario": "No Russia, Atlantic replaces"
+ },
+ "datasets": {
+  "annual": {
+   "title": "India annual oil trade",
+   "description": "PPAC import/export history, FY1998-99 to FY2024-25, thousand tonnes: crude, product imports and exports, LPG imports, and diesel, petrol, jet, naphtha and fuel oil exports.",
+   "file": "data/annual.json"
+  },
+  "suppliers": {
+   "title": "Crude suppliers to India",
+   "description": "Crude imports by supplier, million b/d, July–September 2026. Kpler ship-tracking as reported by Business Standard and ThePrint; July–August 'All other' is the PPAC total less Russia; September 'Others' is Kpler's ~5.3 mb/d total less named suppliers.",
+   "file": "data/suppliers.json"
+  },
+  "import_bill": {
+   "title": "Import bill in rupees",
+   "description": "PPAC customs value of crude imports, product imports and product exports, ₹ crore, April–September 2026 (earlier months revised), with the Mumbai Port Authority monthly rupee-dollar rate; September uses the rate implied by PPAC's rupee and dollar files.",
+   "file": "data/import_bill.json"
+  },
+  "scenarios": {
+   "title": "Model output by scenario",
+   "description": "India-wide product output, thousand tonnes a month at 5.3 mb/d of crude runs, from the India Refinery Yield Simulator for five crude mixes: July 2026, September 2026, and three no-Russia cases. Illustrations, not forecasts.",
+   "file": "data/scenarios.json"
+  },
+  "grade_yields": {
+   "title": "Model yields by refiner",
+   "description": "Indicative light-product and diesel yield, % of crude by weight, for nine crude grades at each refiner's equipment mix. From the India crude yield model (published assays, standard unit yields); runs 2–5 points high.",
+   "file": "data/grade_yields.json"
+  },
+  "monthly": {
+   "title": "India monthly oil trade 2026",
+   "description": "PPAC provisional import/export of crude and products, April–September 2026 (thousand tonnes, file to September 2026 with earlier months revised), with crude in million b/d at 7.33 bbl/t and the month's Brent share of the Indian Crude Basket. August–September use pro-rated customs data.",
+   "file": "data/monthly.json"
+  },
+  "demand": {
+   "title": "Product demand by region",
+   "description": "PPAC original estimate of FY2026-27 consumption by region, thousand tonnes: LPG, petrol, diesel and jet fuel.",
+   "file": "data/demand.json"
+  },
+  "quality": {
+   "title": "Crude and basket quality",
+   "description": "API gravity and sulfur for benchmark grades (Platts Periodic Table of Oil, Sep 2026) and for three baskets: pre-war 20/80 and paper 65/35 (production-weighted Brent and Dubai/Oman basket grades) and the estimated September 2026 mix.",
+   "file": "data/quality.json"
+  },
+  "refiners": {
+   "title": "Indian refiners",
+   "description": "Refining capacity at 1 April 2026 (PPAC) for the five largest groups, and the share of each group's capacity that is simple, cracking or full conversion by Nelson complexity.",
+   "file": "data/refiners.json"
+  },
+  "basket_ratio": {
+   "title": "Basket Brent share",
+   "description": "Dated Brent share of the Indian Crude Basket (rest Dubai/Oman): annual weights FY2000-01 to FY2025-26 from PPAC, monthly from March 2026 per the Ministry order of 26 March 2026 and PPAC notifications.",
+   "file": "data/basket_ratio.json"
+  },
+  "full_conversion_slate": {
+   "title": "Full-conversion product slate",
+   "description": "Indicative product slate at a full-conversion refinery, % of crude by weight, for nine grades, from the India crude yield model.",
+   "file": "data/full_conversion_slate.json"
+  },
+  "accuracy": {
+   "title": "Model vs PPAC yields",
+   "description": "PPAC reported distillate yield for IOC refineries against the yield model's estimate with Gulf sour crude.",
+   "file": "data/accuracy.json"
+  },
+  "basket_price": {
+   "title": "Indian Crude Basket price",
+   "description": "PPAC monthly average FOB price of the Indian Crude Basket, US$/bbl, April 2018 to October 2026 (October month to date, table posted 28 October 2026).",
+   "file": "data/basket_price.json"
+  },
+  "gas": {
+   "title": "Gas supply, August",
+   "description": "PPAC monthly gas report: production, LNG imports and gas available for sale, August 2025 and August 2026, million standard cubic metres.",
+   "file": "data/gas.json"
+  },
+  "product_prices": {
+   "title": "Diesel, petrol and crude prices",
+   "description": "PPAC international FOB prices used for Indian pricing: diesel, petrol and the Indian Crude Basket, US$/bbl monthly averages, April 2018 to October 2026 (October month to date, tables posted 28 October 2026).",
+   "file": "data/product_prices.json"
+  },
+  "range_long": {
+   "title": "Monthly series, 2021–2026",
+   "description": "Monthly values by calendar month for India's crude imports (million b/d at 7.33 bbl/t), product exports and imports (thousand tonnes) from PPAC import/export files (FY2020-21 to FY2025-26 plus FY2026-27 to September), and the Indian basket price and diesel and petrol cracks over the basket (US$/bbl) from PPAC international price tables, January 2021 to October 2026.",
+   "file": "data/range_long.json"
+  }
+ }
+}

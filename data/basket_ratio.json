@@ -1,0 +1,172 @@
+[
+{
+"period": "2000-01",
+"kind": "annual",
+"brent_share_pct": 43.0
+},
+{
+"period": "2001-02",
+"kind": "annual",
+"brent_share_pct": 43.0
+},
+{
+"period": "2002-03",
+"kind": "annual",
+"brent_share_pct": 43.0
+},
+{
+"period": "2003-04",
+"kind": "annual",
+"brent_share_pct": 43.0
+},
+{
+"period": "2004-05",
+"kind": "annual",
+"brent_share_pct": 43.0
+},
+{
+"period": "2005-06",
+"kind": "annual",
+"brent_share_pct": 42.0
+},
+{
+"period": "2006-07",
+"kind": "annual",
+"brent_share_pct": 40.2
+},
+{
+"period": "2007-08",
+"kind": "annual",
+"brent_share_pct": 38.6
+},
+{
+"period": "2008-09",
+"kind": "annual",
+"brent_share_pct": 37.7
+},
+{
+"period": "2009-10",
+"kind": "annual",
+"brent_share_pct": 36.5
+},
+{
+"period": "2010-11",
+"kind": "annual",
+"brent_share_pct": 32.4
+},
+{
+"period": "2011-12",
+"kind": "annual",
+"brent_share_pct": 34.8
+},
+{
+"period": "2012-13",
+"kind": "annual",
+"brent_share_pct": 31.8
+},
+{
+"period": "2013-14",
+"kind": "annual",
+"brent_share_pct": 30.1
+},
+{
+"period": "2014-15",
+"kind": "annual",
+"brent_share_pct": 27.96
+},
+{
+"period": "2015-16",
+"kind": "annual",
+"brent_share_pct": 27.72
+},
+{
+"period": "2016-17",
+"kind": "annual",
+"brent_share_pct": 28.97
+},
+{
+"period": "2017-18",
+"kind": "annual",
+"brent_share_pct": 27.62
+},
+{
+"period": "2018-19",
+"kind": "annual",
+"brent_share_pct": 25.23
+},
+{
+"period": "2019-20",
+"kind": "annual",
+"brent_share_pct": 24.5
+},
+{
+"period": "2020-21",
+"kind": "annual",
+"brent_share_pct": 24.38
+},
+{
+"period": "2021-22",
+"kind": "annual",
+"brent_share_pct": 24.38
+},
+{
+"period": "2022-23",
+"kind": "annual",
+"brent_share_pct": 24.38
+},
+{
+"period": "2023-24",
+"kind": "annual",
+"brent_share_pct": 24.38
+},
+{
+"period": "2024-25",
+"kind": "annual",
+"brent_share_pct": 21.5
+},
+{
+"period": "2025-26",
+"kind": "annual",
+"brent_share_pct": 21.29
+},
+{
+"period": "2026-03",
+"kind": "monthly",
+"brent_share_pct": 61.02
+},
+{
+"period": "2026-04",
+"kind": "monthly",
+"brent_share_pct": 61.02
+},
+{
+"period": "2026-05",
+"kind": "monthly",
+"brent_share_pct": 70
+},
+{
+"period": "2026-06",
+"kind": "monthly",
+"brent_share_pct": 71.02
+},
+{
+"period": "2026-07",
+"kind": "monthly",
+"brent_share_pct": 79.4
+},
+{
+"period": "2026-08",
+"kind": "monthly",
+"brent_share_pct": 74.94
+},
+{
+"period": "2026-09",
+"kind": "monthly",
+"brent_share_pct": 77.81
+},
+{
+"period": "2026-10",
+"kind": "monthly",
+"brent_share_pct": 65.27
+}
+]

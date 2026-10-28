@@ -1,0 +1,86 @@
+[
+{
+"month": "2026-07",
+"supplier": "Russia",
+"mbd": 2.66,
+"group": "Russia (Brent-linked)"
+},
+{
+"month": "2026-07",
+"supplier": "All other",
+"mbd": 2.4,
+"group": "Other"
+},
+{
+"month": "2026-08",
+"supplier": "Russia",
+"mbd": 2.02,
+"group": "Russia (Brent-linked)"
+},
+{
+"month": "2026-08",
+"supplier": "All other",
+"mbd": 2.48,
+"group": "Other"
+},
+{
+"month": "2026-09",
+"supplier": "Russia",
+"mbd": 1.74,
+"group": "Russia (Brent-linked)"
+},
+{
+"month": "2026-09",
+"supplier": "Iraq",
+"mbd": 0.58,
+"group": "Gulf"
+},
+{
+"month": "2026-09",
+"supplier": "Saudi Arabia",
+"mbd": 0.57,
+"group": "Gulf"
+},
+{
+"month": "2026-09",
+"supplier": "UAE",
+"mbd": 0.48,
+"group": "Gulf"
+},
+{
+"month": "2026-09",
+"supplier": "Kuwait",
+"mbd": 0.33,
+"group": "Gulf"
+},
+{
+"month": "2026-09",
+"supplier": "Venezuela",
+"mbd": 0.22,
+"group": "Other"
+},
+{
+"month": "2026-09",
+"supplier": "Nigeria",
+"mbd": 0.15,
+"group": "Atlantic Basin"
+},
+{
+"month": "2026-09",
+"supplier": "United States",
+"mbd": 0.14,
+"group": "Atlantic Basin"
+},
+{
+"month": "2026-09",
+"supplier": "Brazil",
+"mbd": 0.1,
+"group": "Atlantic Basin"
+},
+{
+"month": "2026-09",
+"supplier": "Others",
+"mbd": 0.99,
+"group": "Other"
+}
+]

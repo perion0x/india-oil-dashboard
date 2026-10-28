@@ -1,0 +1,272 @@
+[
+{
+"grade": "Murban",
+"refiner": "IOC",
+"light_pct": 86.8,
+"diesel_pct": 31.2
+},
+{
+"grade": "Murban",
+"refiner": "Reliance",
+"light_pct": 88.2,
+"diesel_pct": 32.0
+},
+{
+"grade": "Murban",
+"refiner": "BPCL",
+"light_pct": 80.6,
+"diesel_pct": 28.7
+},
+{
+"grade": "Murban",
+"refiner": "HPCL",
+"light_pct": 88.2,
+"diesel_pct": 32.0
+},
+{
+"grade": "Murban",
+"refiner": "Nayara",
+"light_pct": 88.2,
+"diesel_pct": 32.0
+},
+{
+"grade": "Upper Zakum",
+"refiner": "IOC",
+"light_pct": 80.3,
+"diesel_pct": 30.9
+},
+{
+"grade": "Upper Zakum",
+"refiner": "Reliance",
+"light_pct": 82.6,
+"diesel_pct": 32.0
+},
+{
+"grade": "Upper Zakum",
+"refiner": "BPCL",
+"light_pct": 72.8,
+"diesel_pct": 27.8
+},
+{
+"grade": "Upper Zakum",
+"refiner": "HPCL",
+"light_pct": 82.6,
+"diesel_pct": 32.0
+},
+{
+"grade": "Upper Zakum",
+"refiner": "Nayara",
+"light_pct": 82.6,
+"diesel_pct": 32.0
+},
+{
+"grade": "Oman",
+"refiner": "IOC",
+"light_pct": 78.8,
+"diesel_pct": 32.4
+},
+{
+"grade": "Oman",
+"refiner": "Reliance",
+"light_pct": 82.4,
+"diesel_pct": 34.3
+},
+{
+"grade": "Oman",
+"refiner": "BPCL",
+"light_pct": 70.8,
+"diesel_pct": 29.2
+},
+{
+"grade": "Oman",
+"refiner": "HPCL",
+"light_pct": 82.4,
+"diesel_pct": 34.3
+},
+{
+"grade": "Oman",
+"refiner": "Nayara",
+"light_pct": 82.4,
+"diesel_pct": 34.3
+},
+{
+"grade": "WTI Light",
+"refiner": "IOC",
+"light_pct": 89.9,
+"diesel_pct": 26.6
+},
+{
+"grade": "WTI Light",
+"refiner": "Reliance",
+"light_pct": 90.5,
+"diesel_pct": 27.1
+},
+{
+"grade": "WTI Light",
+"refiner": "BPCL",
+"light_pct": 85.6,
+"diesel_pct": 24.8
+},
+{
+"grade": "WTI Light",
+"refiner": "HPCL",
+"light_pct": 90.5,
+"diesel_pct": 27.1
+},
+{
+"grade": "WTI Light",
+"refiner": "Nayara",
+"light_pct": 90.5,
+"diesel_pct": 27.1
+},
+{
+"grade": "Bonny Light",
+"refiner": "IOC",
+"light_pct": 87.9,
+"diesel_pct": 37.3
+},
+{
+"grade": "Bonny Light",
+"refiner": "Reliance",
+"light_pct": 89.0,
+"diesel_pct": 37.9
+},
+{
+"grade": "Bonny Light",
+"refiner": "BPCL",
+"light_pct": 82.0,
+"diesel_pct": 35.0
+},
+{
+"grade": "Bonny Light",
+"refiner": "HPCL",
+"light_pct": 89.0,
+"diesel_pct": 37.9
+},
+{
+"grade": "Bonny Light",
+"refiner": "Nayara",
+"light_pct": 89.0,
+"diesel_pct": 37.9
+},
+{
+"grade": "Mero",
+"refiner": "IOC",
+"light_pct": 79.4,
+"diesel_pct": 34.9
+},
+{
+"grade": "Mero",
+"refiner": "Reliance",
+"light_pct": 84.3,
+"diesel_pct": 37.5
+},
+{
+"grade": "Mero",
+"refiner": "BPCL",
+"light_pct": 70.5,
+"diesel_pct": 31.3
+},
+{
+"grade": "Mero",
+"refiner": "HPCL",
+"light_pct": 84.3,
+"diesel_pct": 37.5
+},
+{
+"grade": "Mero",
+"refiner": "Nayara",
+"light_pct": 84.3,
+"diesel_pct": 37.5
+},
+{
+"grade": "Bacalhau",
+"refiner": "IOC",
+"light_pct": 81.7,
+"diesel_pct": 34.8
+},
+{
+"grade": "Bacalhau",
+"refiner": "Reliance",
+"light_pct": 85.2,
+"diesel_pct": 36.6
+},
+{
+"grade": "Bacalhau",
+"refiner": "BPCL",
+"light_pct": 73.1,
+"diesel_pct": 31.3
+},
+{
+"grade": "Bacalhau",
+"refiner": "HPCL",
+"light_pct": 85.2,
+"diesel_pct": 36.6
+},
+{
+"grade": "Bacalhau",
+"refiner": "Nayara",
+"light_pct": 85.2,
+"diesel_pct": 36.6
+},
+{
+"grade": "Unity Gold",
+"refiner": "IOC",
+"light_pct": 83.1,
+"diesel_pct": 33.2
+},
+{
+"grade": "Unity Gold",
+"refiner": "Reliance",
+"light_pct": 85.6,
+"diesel_pct": 34.5
+},
+{
+"grade": "Unity Gold",
+"refiner": "BPCL",
+"light_pct": 75.3,
+"diesel_pct": 30.1
+},
+{
+"grade": "Unity Gold",
+"refiner": "HPCL",
+"light_pct": 85.6,
+"diesel_pct": 34.5
+},
+{
+"grade": "Unity Gold",
+"refiner": "Nayara",
+"light_pct": 85.6,
+"diesel_pct": 34.5
+},
+{
+"grade": "Pearl Sweet",
+"refiner": "IOC",
+"light_pct": 73.9,
+"diesel_pct": 37.6
+},
+{
+"grade": "Pearl Sweet",
+"refiner": "Reliance",
+"light_pct": 81.1,
+"diesel_pct": 41.5
+},
+{
+"grade": "Pearl Sweet",
+"refiner": "BPCL",
+"light_pct": 63.5,
+"diesel_pct": 33.4
+},
+{
+"grade": "Pearl Sweet",
+"refiner": "HPCL",
+"light_pct": 81.1,
+"diesel_pct": 41.5
+},
+{
+"grade": "Pearl Sweet",
+"refiner": "Nayara",
+"light_pct": 81.1,
+"diesel_pct": 41.5
+}
+]

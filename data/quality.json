@@ -1,0 +1,92 @@
+[
+{
+"name": "Pre-war basket 20/80",
+"kind": "basket",
+"api": 33.8,
+"sulfur_pct": 1.41
+},
+{
+"name": "Paper basket 65/35",
+"kind": "basket",
+"api": 38.3,
+"sulfur_pct": 0.74
+},
+{
+"name": "Actual Sep 2026 mix (est.)",
+"kind": "basket",
+"api": 31.7,
+"sulfur_pct": 1.9
+},
+{
+"name": "WTI Midland",
+"kind": "Brent basket",
+"api": 42.0,
+"sulfur_pct": 0.2
+},
+{
+"name": "Forties",
+"kind": "Brent basket",
+"api": 42.1,
+"sulfur_pct": 0.49
+},
+{
+"name": "Brent Blend",
+"kind": "Brent basket",
+"api": 38.0,
+"sulfur_pct": 0.42
+},
+{
+"name": "Ekofisk",
+"kind": "Brent basket",
+"api": 38.9,
+"sulfur_pct": 0.21
+},
+{
+"name": "Murban",
+"kind": "Dubai basket",
+"api": 40.5,
+"sulfur_pct": 0.74
+},
+{
+"name": "Oman",
+"kind": "Oman basket",
+"api": 33.2,
+"sulfur_pct": 1.29
+},
+{
+"name": "Upper Zakum",
+"kind": "Dubai basket",
+"api": 33.2,
+"sulfur_pct": 2.09
+},
+{
+"name": "Dubai",
+"kind": "Dubai basket",
+"api": 30.4,
+"sulfur_pct": 2.13
+},
+{
+"name": "Al Shaheen",
+"kind": "Dubai basket",
+"api": 28.0,
+"sulfur_pct": 2.4
+},
+{
+"name": "Basrah Medium",
+"kind": "Gulf",
+"api": 29.0,
+"sulfur_pct": 3.0
+},
+{
+"name": "Arab Light",
+"kind": "Gulf",
+"api": 33.3,
+"sulfur_pct": 1.96
+},
+{
+"name": "Urals",
+"kind": "Russia",
+"api": 31.7,
+"sulfur_pct": 1.7
+}
+]

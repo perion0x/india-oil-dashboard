@@ -1,0 +1,44 @@
+[
+{
+"month": "2026-04",
+"crude_cr": 146727,
+"product_imports_cr": 9603,
+"product_exports_cr": 40304,
+"inr_per_usd": 93.0
+},
+{
+"month": "2026-05",
+"crude_cr": 178097,
+"product_imports_cr": 16233,
+"product_exports_cr": 36960,
+"inr_per_usd": 95.0
+},
+{
+"month": "2026-06",
+"crude_cr": 138441,
+"product_imports_cr": 14498,
+"product_exports_cr": 30284,
+"inr_per_usd": 94.5
+},
+{
+"month": "2026-07",
+"crude_cr": 130928,
+"product_imports_cr": 13571,
+"product_exports_cr": 47975,
+"inr_per_usd": 95.4
+},
+{
+"month": "2026-08",
+"crude_cr": 112186,
+"product_imports_cr": 12776,
+"product_exports_cr": 46597,
+"inr_per_usd": 95.0
+},
+{
+"month": "2026-09",
+"crude_cr": 156472,
+"product_imports_cr": 13400,
+"product_exports_cr": 56567,
+"inr_per_usd": 95.3
+}
+]

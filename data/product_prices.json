@@ -1,0 +1,620 @@
+[
+{
+"month": "2018-04",
+"basket_usd_bbl": 69.22,
+"diesel_usd_bbl": 82.44,
+"petrol_usd_bbl": 78.43
+},
+{
+"month": "2018-05",
+"basket_usd_bbl": 75.25,
+"diesel_usd_bbl": 88.62,
+"petrol_usd_bbl": 85.31
+},
+{
+"month": "2018-06",
+"basket_usd_bbl": 73.83,
+"diesel_usd_bbl": 85.44,
+"petrol_usd_bbl": 81.52
+},
+{
+"month": "2018-07",
+"basket_usd_bbl": 73.47,
+"diesel_usd_bbl": 84.85,
+"petrol_usd_bbl": 81.12
+},
+{
+"month": "2018-08",
+"basket_usd_bbl": 72.53,
+"diesel_usd_bbl": 86.7,
+"petrol_usd_bbl": 82.44
+},
+{
+"month": "2018-09",
+"basket_usd_bbl": 77.88,
+"diesel_usd_bbl": 91.88,
+"petrol_usd_bbl": 87.53
+},
+{
+"month": "2018-10",
+"basket_usd_bbl": 80.08,
+"diesel_usd_bbl": 95.01,
+"petrol_usd_bbl": 85.67
+},
+{
+"month": "2018-11",
+"basket_usd_bbl": 65.4,
+"diesel_usd_bbl": 79.88,
+"petrol_usd_bbl": 66.93
+},
+{
+"month": "2018-12",
+"basket_usd_bbl": 57.77,
+"diesel_usd_bbl": 67.0,
+"petrol_usd_bbl": 57.96
+},
+{
+"month": "2019-01",
+"basket_usd_bbl": 59.27,
+"diesel_usd_bbl": 69.73,
+"petrol_usd_bbl": 59.13
+},
+{
+"month": "2019-02",
+"basket_usd_bbl": 64.53,
+"diesel_usd_bbl": 76.55,
+"petrol_usd_bbl": 64.38
+},
+{
+"month": "2019-03",
+"basket_usd_bbl": 66.74,
+"diesel_usd_bbl": 78.82,
+"petrol_usd_bbl": 72.83
+},
+{
+"month": "2019-04",
+"basket_usd_bbl": 71.0,
+"diesel_usd_bbl": 81.35,
+"petrol_usd_bbl": 78.83
+},
+{
+"month": "2019-05",
+"basket_usd_bbl": 70.01,
+"diesel_usd_bbl": 80.45,
+"petrol_usd_bbl": 74.49
+},
+{
+"month": "2019-06",
+"basket_usd_bbl": 62.37,
+"diesel_usd_bbl": 72.88,
+"petrol_usd_bbl": 65.87
+},
+{
+"month": "2019-07",
+"basket_usd_bbl": 63.63,
+"diesel_usd_bbl": 76.84,
+"petrol_usd_bbl": 71.1
+},
+{
+"month": "2019-08",
+"basket_usd_bbl": 59.35,
+"diesel_usd_bbl": 73.16,
+"petrol_usd_bbl": 66.58
+},
+{
+"month": "2019-09",
+"basket_usd_bbl": 61.72,
+"diesel_usd_bbl": 75.9,
+"petrol_usd_bbl": 69.5
+},
+{
+"month": "2019-10",
+"basket_usd_bbl": 59.7,
+"diesel_usd_bbl": 73.92,
+"petrol_usd_bbl": 68.14
+},
+{
+"month": "2019-11",
+"basket_usd_bbl": 62.53,
+"diesel_usd_bbl": 72.98,
+"petrol_usd_bbl": 71.33
+},
+{
+"month": "2019-12",
+"basket_usd_bbl": 65.5,
+"diesel_usd_bbl": 75.92,
+"petrol_usd_bbl": 71.29
+},
+{
+"month": "2020-01",
+"basket_usd_bbl": 64.31,
+"diesel_usd_bbl": 73.35,
+"petrol_usd_bbl": 69.11
+},
+{
+"month": "2020-02",
+"basket_usd_bbl": 54.63,
+"diesel_usd_bbl": 63.41,
+"petrol_usd_bbl": 62.57
+},
+{
+"month": "2020-03",
+"basket_usd_bbl": 33.36,
+"diesel_usd_bbl": 41.87,
+"petrol_usd_bbl": 35.19
+},
+{
+"month": "2020-04",
+"basket_usd_bbl": 19.9,
+"diesel_usd_bbl": 25.25,
+"petrol_usd_bbl": 19.44
+},
+{
+"month": "2020-05",
+"basket_usd_bbl": 30.61,
+"diesel_usd_bbl": 30.77,
+"petrol_usd_bbl": 30.83
+},
+{
+"month": "2020-06",
+"basket_usd_bbl": 40.63,
+"diesel_usd_bbl": 44.72,
+"petrol_usd_bbl": 42.79
+},
+{
+"month": "2020-07",
+"basket_usd_bbl": 43.35,
+"diesel_usd_bbl": 48.64,
+"petrol_usd_bbl": 44.8
+},
+{
+"month": "2020-08",
+"basket_usd_bbl": 44.19,
+"diesel_usd_bbl": 47.46,
+"petrol_usd_bbl": 46.97
+},
+{
+"month": "2020-09",
+"basket_usd_bbl": 41.35,
+"diesel_usd_bbl": 42.44,
+"petrol_usd_bbl": 45.66
+},
+{
+"month": "2020-10",
+"basket_usd_bbl": 40.66,
+"diesel_usd_bbl": 42.29,
+"petrol_usd_bbl": 44.82
+},
+{
+"month": "2020-11",
+"basket_usd_bbl": 43.34,
+"diesel_usd_bbl": 45.79,
+"petrol_usd_bbl": 45.52
+},
+{
+"month": "2020-12",
+"basket_usd_bbl": 49.84,
+"diesel_usd_bbl": 53.13,
+"petrol_usd_bbl": 52.41
+},
+{
+"month": "2021-01",
+"basket_usd_bbl": 54.79,
+"diesel_usd_bbl": 58.35,
+"petrol_usd_bbl": 58.91
+},
+{
+"month": "2021-02",
+"basket_usd_bbl": 61.22,
+"diesel_usd_bbl": 66.29,
+"petrol_usd_bbl": 66.36
+},
+{
+"month": "2021-03",
+"basket_usd_bbl": 64.73,
+"diesel_usd_bbl": 67.57,
+"petrol_usd_bbl": 71.51
+},
+{
+"month": "2021-04",
+"basket_usd_bbl": 63.4,
+"diesel_usd_bbl": 66.61,
+"petrol_usd_bbl": 71.7
+},
+{
+"month": "2021-05",
+"basket_usd_bbl": 66.95,
+"diesel_usd_bbl": 72.08,
+"petrol_usd_bbl": 74.42
+},
+{
+"month": "2021-06",
+"basket_usd_bbl": 71.98,
+"diesel_usd_bbl": 77.12,
+"petrol_usd_bbl": 78.85
+},
+{
+"month": "2021-07",
+"basket_usd_bbl": 73.54,
+"diesel_usd_bbl": 78.21,
+"petrol_usd_bbl": 83.1
+},
+{
+"month": "2021-08",
+"basket_usd_bbl": 69.8,
+"diesel_usd_bbl": 74.22,
+"petrol_usd_bbl": 78.92
+},
+{
+"month": "2021-09",
+"basket_usd_bbl": 73.13,
+"diesel_usd_bbl": 80.79,
+"petrol_usd_bbl": 82.08
+},
+{
+"month": "2021-10",
+"basket_usd_bbl": 82.11,
+"diesel_usd_bbl": 93.37,
+"petrol_usd_bbl": 95.77
+},
+{
+"month": "2021-11",
+"basket_usd_bbl": 80.64,
+"diesel_usd_bbl": 89.34,
+"petrol_usd_bbl": 92.18
+},
+{
+"month": "2021-12",
+"basket_usd_bbl": 73.3,
+"diesel_usd_bbl": 83.45,
+"petrol_usd_bbl": 85.67
+},
+{
+"month": "2022-01",
+"basket_usd_bbl": 84.67,
+"diesel_usd_bbl": 97.09,
+"petrol_usd_bbl": 96.16
+},
+{
+"month": "2022-02",
+"basket_usd_bbl": 94.07,
+"diesel_usd_bbl": 108.7,
+"petrol_usd_bbl": 108.29
+},
+{
+"month": "2022-03",
+"basket_usd_bbl": 112.87,
+"diesel_usd_bbl": 138.12,
+"petrol_usd_bbl": 127.44
+},
+{
+"month": "2022-04",
+"basket_usd_bbl": 102.97,
+"diesel_usd_bbl": 145.13,
+"petrol_usd_bbl": 123.5
+},
+{
+"month": "2022-05",
+"basket_usd_bbl": 109.51,
+"diesel_usd_bbl": 147.77,
+"petrol_usd_bbl": 141.18
+},
+{
+"month": "2022-06",
+"basket_usd_bbl": 116.01,
+"diesel_usd_bbl": 170.92,
+"petrol_usd_bbl": 148.82
+},
+{
+"month": "2022-07",
+"basket_usd_bbl": 105.49,
+"diesel_usd_bbl": 139.93,
+"petrol_usd_bbl": 116.53
+},
+{
+"month": "2022-08",
+"basket_usd_bbl": 97.4,
+"diesel_usd_bbl": 134.48,
+"petrol_usd_bbl": 107.16
+},
+{
+"month": "2022-09",
+"basket_usd_bbl": 90.71,
+"diesel_usd_bbl": 123.36,
+"petrol_usd_bbl": 93.78
+},
+{
+"month": "2022-10",
+"basket_usd_bbl": 91.7,
+"diesel_usd_bbl": 133.52,
+"petrol_usd_bbl": 91.19
+},
+{
+"month": "2022-11",
+"basket_usd_bbl": 87.55,
+"diesel_usd_bbl": 123.18,
+"petrol_usd_bbl": 93.13
+},
+{
+"month": "2022-12",
+"basket_usd_bbl": 78.1,
+"diesel_usd_bbl": 107.17,
+"petrol_usd_bbl": 85.45
+},
+{
+"month": "2023-01",
+"basket_usd_bbl": 80.92,
+"diesel_usd_bbl": 111.22,
+"petrol_usd_bbl": 95.59
+},
+{
+"month": "2023-02",
+"basket_usd_bbl": 82.28,
+"diesel_usd_bbl": 103.63,
+"petrol_usd_bbl": 95.97
+},
+{
+"month": "2023-03",
+"basket_usd_bbl": 78.54,
+"diesel_usd_bbl": 98.33,
+"petrol_usd_bbl": 94.29
+},
+{
+"month": "2023-04",
+"basket_usd_bbl": 83.76,
+"diesel_usd_bbl": 93.93,
+"petrol_usd_bbl": 96.54
+},
+{
+"month": "2023-05",
+"basket_usd_bbl": 74.98,
+"diesel_usd_bbl": 85.05,
+"petrol_usd_bbl": 85.6
+},
+{
+"month": "2023-06",
+"basket_usd_bbl": 74.93,
+"diesel_usd_bbl": 88.77,
+"petrol_usd_bbl": 87.58
+},
+{
+"month": "2023-07",
+"basket_usd_bbl": 80.37,
+"diesel_usd_bbl": 98.76,
+"petrol_usd_bbl": 93.2
+},
+{
+"month": "2023-08",
+"basket_usd_bbl": 86.43,
+"diesel_usd_bbl": 115.67,
+"petrol_usd_bbl": 101.92
+},
+{
+"month": "2023-09",
+"basket_usd_bbl": 93.54,
+"diesel_usd_bbl": 121.65,
+"petrol_usd_bbl": 104.54
+},
+{
+"month": "2023-10",
+"basket_usd_bbl": 90.08,
+"diesel_usd_bbl": 113.58,
+"petrol_usd_bbl": 93.78
+},
+{
+"month": "2023-11",
+"basket_usd_bbl": 83.46,
+"diesel_usd_bbl": 103.21,
+"petrol_usd_bbl": 92.41
+},
+{
+"month": "2023-12",
+"basket_usd_bbl": 77.42,
+"diesel_usd_bbl": 95.99,
+"petrol_usd_bbl": 87.28
+},
+{
+"month": "2024-01",
+"basket_usd_bbl": 79.22,
+"diesel_usd_bbl": 97.55,
+"petrol_usd_bbl": 91.2
+},
+{
+"month": "2024-02",
+"basket_usd_bbl": 81.62,
+"diesel_usd_bbl": 101.17,
+"petrol_usd_bbl": 95.59
+},
+{
+"month": "2024-03",
+"basket_usd_bbl": 84.49,
+"diesel_usd_bbl": 98.7,
+"petrol_usd_bbl": 97.14
+},
+{
+"month": "2024-04",
+"basket_usd_bbl": 89.44,
+"diesel_usd_bbl": 99.94,
+"petrol_usd_bbl": 102.13
+},
+{
+"month": "2024-05",
+"basket_usd_bbl": 83.62,
+"diesel_usd_bbl": 92.01,
+"petrol_usd_bbl": 91.13
+},
+{
+"month": "2024-06",
+"basket_usd_bbl": 82.55,
+"diesel_usd_bbl": 93.08,
+"petrol_usd_bbl": 87.93
+},
+{
+"month": "2024-07",
+"basket_usd_bbl": 84.15,
+"diesel_usd_bbl": 95.18,
+"petrol_usd_bbl": 92.13
+},
+{
+"month": "2024-08",
+"basket_usd_bbl": 78.27,
+"diesel_usd_bbl": 89.18,
+"petrol_usd_bbl": 84.7
+},
+{
+"month": "2024-09",
+"basket_usd_bbl": 73.69,
+"diesel_usd_bbl": 80.99,
+"petrol_usd_bbl": 78.45
+},
+{
+"month": "2024-10",
+"basket_usd_bbl": 75.12,
+"diesel_usd_bbl": 85.0,
+"petrol_usd_bbl": 79.75
+},
+{
+"month": "2024-11",
+"basket_usd_bbl": 73.02,
+"diesel_usd_bbl": 86.79,
+"petrol_usd_bbl": 79.09
+},
+{
+"month": "2024-12",
+"basket_usd_bbl": 73.34,
+"diesel_usd_bbl": 86.42,
+"petrol_usd_bbl": 81.35
+},
+{
+"month": "2025-01",
+"basket_usd_bbl": 80.2,
+"diesel_usd_bbl": 92.27,
+"petrol_usd_bbl": 84.48
+},
+{
+"month": "2025-02",
+"basket_usd_bbl": 77.33,
+"diesel_usd_bbl": 88.86,
+"petrol_usd_bbl": 84.83
+},
+{
+"month": "2025-03",
+"basket_usd_bbl": 72.47,
+"diesel_usd_bbl": 83.06,
+"petrol_usd_bbl": 79.56
+},
+{
+"month": "2025-04",
+"basket_usd_bbl": 67.72,
+"diesel_usd_bbl": 78.72,
+"petrol_usd_bbl": 75.3
+},
+{
+"month": "2025-05",
+"basket_usd_bbl": 64.04,
+"diesel_usd_bbl": 76.09,
+"petrol_usd_bbl": 75.03
+},
+{
+"month": "2025-06",
+"basket_usd_bbl": 69.77,
+"diesel_usd_bbl": 83.27,
+"petrol_usd_bbl": 80.1
+},
+{
+"month": "2025-07",
+"basket_usd_bbl": 70.95,
+"diesel_usd_bbl": 87.76,
+"petrol_usd_bbl": 77.93
+},
+{
+"month": "2025-08",
+"basket_usd_bbl": 69.11,
+"diesel_usd_bbl": 82.88,
+"petrol_usd_bbl": 77.96
+},
+{
+"month": "2025-09",
+"basket_usd_bbl": 69.61,
+"diesel_usd_bbl": 85.92,
+"petrol_usd_bbl": 79.52
+},
+{
+"month": "2025-10",
+"basket_usd_bbl": 65.08,
+"diesel_usd_bbl": 86.14,
+"petrol_usd_bbl": 77.09
+},
+{
+"month": "2025-11",
+"basket_usd_bbl": 64.31,
+"diesel_usd_bbl": 90.28,
+"petrol_usd_bbl": 78.74
+},
+{
+"month": "2025-12",
+"basket_usd_bbl": 62.2,
+"diesel_usd_bbl": 78.7,
+"petrol_usd_bbl": 75.82
+},
+{
+"month": "2026-01",
+"basket_usd_bbl": 63.08,
+"diesel_usd_bbl": 78.33,
+"petrol_usd_bbl": 71.43
+},
+{
+"month": "2026-02",
+"basket_usd_bbl": 69.01,
+"diesel_usd_bbl": 86.03,
+"petrol_usd_bbl": 75.28
+},
+{
+"month": "2026-03",
+"basket_usd_bbl": 113.49,
+"diesel_usd_bbl": 186.61,
+"petrol_usd_bbl": 128.84
+},
+{
+"month": "2026-04",
+"basket_usd_bbl": 114.48,
+"diesel_usd_bbl": 187.92,
+"petrol_usd_bbl": 127.81
+},
+{
+"month": "2026-05",
+"basket_usd_bbl": 106.23,
+"diesel_usd_bbl": 149.52,
+"petrol_usd_bbl": 129.63
+},
+{
+"month": "2026-06",
+"basket_usd_bbl": 83.22,
+"diesel_usd_bbl": 120.05,
+"petrol_usd_bbl": 107.78
+},
+{
+"month": "2026-07",
+"basket_usd_bbl": 82.04,
+"diesel_usd_bbl": 136.05,
+"petrol_usd_bbl": 106.78
+},
+{
+"month": "2026-08",
+"basket_usd_bbl": 90.19,
+"diesel_usd_bbl": 149.35,
+"petrol_usd_bbl": 110.87
+},
+{
+"month": "2026-09",
+"basket_usd_bbl": 116.09,
+"diesel_usd_bbl": 164.45,
+"petrol_usd_bbl": 136.13
+},
+{
+"month": "2026-10",
+"basket_usd_bbl": 120.33,
+"diesel_usd_bbl": 155.21,
+"petrol_usd_bbl": 140.37
+}
+]

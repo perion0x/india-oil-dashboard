@@ -1,0 +1,1206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>India Oil Market Deep Dive</title>
+<meta name="description" content="How India kept importing crude through the 2026 Hormuz shock: the swing from Russian Urals to a Brent-priced basket, what it did to refinery output and product exports, and the price exposures it creates.">
+<meta property="og:title" content="India Oil Market Deep Dive">
+<meta property="og:description" content="How India kept importing crude through the 2026 Hormuz shock: the swing from Russian Urals to a Brent-priced basket, what it did to refinery output and product exports, and the price exposures it creates.">
+<meta property="og:type" content="website">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f6db3'/%3E%3Cpath d='M16 6c4 6 7 9.5 7 13a7 7 0 0 1-14 0c0-3.5 3-7 7-13z' fill='white'/%3E%3C/svg%3E">
+<style>
+/* Design tokens the dashboard page expects (light first, then dark). */
+:root {
+  --font-anthropic-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-anthropic-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --cds-font-size-caption: 12px; --cds-font-size-body: 14px; --cds-font-size-heading: 16px; --cds-font-size-title: 30px;
+  --cds-font-weight-medium: 600;
+  --cds-gap-xs: 4px; --cds-gap-sm: 8px; --cds-gap-md: 14px; --cds-gap-lg: 20px; --cds-gap-xl: 28px;
+  --cds-pad-xs: 4px; --cds-pad-sm: 8px; --cds-pad-md: 12px; --cds-pad-lg: 18px; --cds-pad-xl: 24px;
+  --cds-radius: 8px; --cds-dur-slow: 240ms; --cds-ease-out: cubic-bezier(.2, .8, .2, 1);
+  --color-bg: #f6f6f3; --color-panel: #ffffff; --color-fg: #1d2025; --color-fg-muted: #5d6570;
+  --color-border-line: #e2e4e8; --color-ok: #1f7a4d; --color-warn: #a86400; --color-bad: #c0392b;
+  --cds-chart-grid: #eceef1; --cds-chart-axis: #9aa1a9; --cds-chart-muted: #c5cad0; --cds-chart-reference: #858c95;
+  --cds-chart-status-critical: #c0392b;
+  --cds-surface-popover: #ffffff; --cds-border: #d4d8dd; --cds-shadow-popover: 0 4px 14px rgba(20, 24, 30, .14);
+  --cds-text-secondary: #5d6570;
+  --c0: #2f6db3; --c1: #d9822b; --c2: #7a5cc2; --c3: #2a8a6a; --c4: #c94f7c; --c5: #8c6d4f; --c6: #6b8e23; --c7: #3a9ab0;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --color-bg: #121417; --color-panel: #1a1d21; --color-fg: #e7e9ec; --color-fg-muted: #9ba3ad;
+  --color-border-line: #2c3036; --color-ok: #4cc38a; --color-warn: #f0b04f; --color-bad: #f0776e;
+  --cds-chart-grid: #262a30; --cds-chart-axis: #5d646d; --cds-chart-muted: #4a5058; --cds-chart-reference: #7f868f;
+  --cds-chart-status-critical: #f0776e;
+  --cds-surface-popover: #23272c; --cds-border: #3a4048; --cds-shadow-popover: 0 4px 14px rgba(0, 0, 0, .5);
+  --cds-text-secondary: #9ba3ad;
+  --c0: #5b98e0; --c1: #f0a14f; --c2: #a38ae6; --c3: #4cb894; --c4: #e07aa0; --c5: #b8957a; --c6: #9cbf4f; --c7: #5fc0d2;
+  color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --color-bg: #121417; --color-panel: #1a1d21; --color-fg: #e7e9ec; --color-fg-muted: #9ba3ad;
+  --color-border-line: #2c3036; --color-ok: #4cc38a; --color-warn: #f0b04f; --color-bad: #f0776e;
+  --cds-chart-grid: #262a30; --cds-chart-axis: #5d646d; --cds-chart-muted: #4a5058; --cds-chart-reference: #7f868f;
+  --cds-chart-status-critical: #f0776e;
+  --cds-surface-popover: #23272c; --cds-border: #3a4048; --cds-shadow-popover: 0 4px 14px rgba(0, 0, 0, .5);
+  --cds-text-secondary: #9ba3ad;
+  --c0: #5b98e0; --c1: #f0a14f; --c2: #a38ae6; --c3: #4cb894; --c4: #e07aa0; --c5: #b8957a; --c6: #9cbf4f; --c7: #5fc0d2;
+  color-scheme: dark; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--color-bg); color: var(--color-fg); font: 14px/1.5 var(--font-anthropic-sans); -webkit-font-smoothing: antialiased; }
+[hidden] { display: none !important; }
+#dash-root { padding-block: 24px 16px; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 900px) { #dash-root { padding-left: max(36px, env(safe-area-inset-left, 0px)); padding-right: max(36px, env(safe-area-inset-right, 0px)); } }
+.dash-skeleton { color: transparent !important; background: var(--cds-chart-grid); border-radius: 4px; }
+.site-foot { max-width: 78rem; margin: 8px auto 40px; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); font-size: 13px; color: var(--color-fg-muted); }
+@media (min-width: 900px) { .site-foot { padding-left: max(36px, env(safe-area-inset-left, 0px)); padding-right: max(36px, env(safe-area-inset-right, 0px)); } }
+.site-foot h2 { font-size: 15px; color: var(--color-fg); font-weight: 600; margin: 0 0 8px; }
+.site-foot .src { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: 10px 24px; margin: 0 0 18px; padding: 0; list-style: none; }
+.site-foot .src li { border-top: 1px solid var(--color-border-line); padding-top: 8px; }
+.site-foot .src b { color: var(--color-fg); font-weight: 600; }
+.site-foot a { color: var(--c0); }
+.site-foot .by { display: flex; flex-wrap: wrap; gap: 6px 16px; border-top: 1px solid var(--color-border-line); padding-top: 12px; }
+.theme-btn { font: inherit; font-size: 12px; color: var(--color-fg-muted); background: none; border: 1px solid var(--color-border-line); border-radius: 999px; padding: 3px 10px; cursor: pointer; }
+.theme-btn:focus-visible { outline: 2px solid var(--c0); outline-offset: 2px; }
+</style>
+<script src="vendor/d3.v7.9.0.min.js"></script>
+<script src="data.js"></script>
+<script>
+/* A small stand-in for the dashboard runtime the page was written against:
+   it serves the bundled data files, runs calculations, and redraws on resize. */
+(function () {
+  const RAW = window.DASH_DATA || {}, cache = {}, calcs = {}, subs = [];
+  let params = Object.assign({}, window.DASH_PARAMS || {});
+  function parse(id) {
+    if (cache[id]) return cache[id];
+    const r = RAW[id];
+    if (!r) return null;
+    let rows, columns;
+    if (r.format === 'csv') { rows = d3.csvParse(r.text); columns = rows.columns; rows = Array.from(rows); }
+    else { let j = JSON.parse(r.text); if (!Array.isArray(j)) j = j.rows || j.data || j.results || j; rows = j; columns = Array.isArray(j) && j[0] ? Object.keys(j[0]) : []; }
+    return (cache[id] = { status: 'ok', data: rows, rows, columns, meta: [], refreshing: false, message: '' });
+  }
+  function run(fn) { try { fn(); } catch (e) { console.error(e); } }
+  window.dash = {
+    colors: ['var(--c0)', 'var(--c1)', 'var(--c2)', 'var(--c3)', 'var(--c4)', 'var(--c5)', 'var(--c6)', 'var(--c7)'],
+    data(id) {
+      const d = parse(id);
+      if (d) return d;
+      const c = calcs[id];
+      if (c) {
+        if (!c.out) { try { const v = c.fn(...c.inputs.map((i) => window.dash.data(i).data)); c.out = { status: 'ok', data: v, rows: v, columns: Array.isArray(v) && v[0] ? Object.keys(v[0]) : [], meta: [], refreshing: false, message: '' }; } catch (e) { console.error(e); c.out = { status: 'error', data: [], rows: [], columns: [], meta: [], message: String(e) }; } }
+        return c.out;
+      }
+      return { status: 'missing', data: [], rows: [], columns: [], meta: [], message: 'No data named ' + id };
+    },
+    calc(id, o) { calcs[id] = { inputs: o.inputs || [], fn: o.fn }; },
+    loader() {},
+    onData(fn) { subs.push(fn); run(fn); },
+    params() { return Object.assign({}, params); },
+    setParams(p) { params = Object.assign({}, params, p); subs.forEach(run); },
+    resetParams() { params = Object.assign({}, window.DASH_PARAMS || {}); subs.forEach(run); },
+    setLink(name) { try { history.replaceState(null, '', name ? '#' + name : location.pathname); } catch (e) {} },
+    refresh() {}
+  };
+  let lastW = 0, t = null;
+  window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { const w = document.getElementById('dash-root').clientWidth; if (w !== lastW) { lastW = w; subs.forEach(run); } }, 150); });
+})();
+</script>
+</head>
+<body>
+<main id="dash-root">
+<style>
+.ix { max-width: 1180px; margin-inline: auto; display: grid; gap: var(--cds-gap-lg); font-family: var(--font-anthropic-sans); }
+.ix-head h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; text-wrap: balance; }
+.ix-head p { margin: var(--cds-gap-xs) 0 0; color: var(--color-fg-muted); max-width: 75ch; }
+.ix-tabs { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); border-bottom: 1px solid var(--color-border-line); padding-bottom: var(--cds-gap-sm); }
+.ix-tab { font: inherit; font-size: var(--cds-font-size-body); background: transparent; color: var(--color-fg-muted); border: 1px solid transparent; border-radius: var(--cds-radius); padding: var(--cds-pad-xs) var(--cds-pad-sm); cursor: pointer; }
+.ix-tab:hover { color: var(--color-fg); border-color: var(--color-border-line); }
+.ix-tab[aria-selected="true"] { color: var(--color-fg); background: var(--color-panel); border-color: var(--color-border-line); font-weight: var(--cds-font-weight-medium); }
+.ix-tab:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+.ix-page { display: grid; gap: var(--cds-gap-lg); }
+.ix-page[hidden] { display: none; }
+.ix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 30rem), 1fr)); gap: var(--cds-gap-md); }
+.ix-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); min-width: 0; position: relative; }
+.ix-card h2, .ix-card h3 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; text-wrap: balance; }
+.ix-note { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); margin: var(--cds-gap-xs) 0 var(--cds-gap-md); }
+.ix-sec { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: var(--cds-gap-sm) 0 0; }
+.ix-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); gap: var(--cds-gap-md); }
+.ix-kpi { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md); display: grid; gap: var(--cds-gap-xs); align-content: start; }
+.ix-kpi .k { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.ix-kpi .v { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.ix-kpi .s { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.ix-prose { max-width: 75ch; line-height: 1.55; }
+.ix-prose p { margin: 0 0 var(--cds-gap-sm); }
+.ix-prose ul { margin: 0 0 var(--cds-gap-sm); padding-left: 1.2em; }
+.ix-prose li { margin: 0 0 var(--cds-gap-xs); }
+.ix .num { font-variant-numeric: tabular-nums; }
+.ix-chart { min-height: 280px; position: relative; }
+.ix-chart.tall { min-height: 360px; }
+.ix-chart svg { display: block; overflow: visible; }
+.ix-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); white-space: nowrap; z-index: 5; }
+.ix-tip .t { color: var(--cds-text-secondary); margin-bottom: 2px; }
+.ix-tip i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 6px; }
+.ix-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs) var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-top: var(--cds-gap-sm); }
+.ix-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.ix-tablewrap { overflow-x: auto; }
+.ix table { border-collapse: collapse; width: 100%; font-size: var(--cds-font-size-body); font-variant-numeric: tabular-nums; }
+.ix th, .ix td { padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); text-align: right; white-space: nowrap; }
+.ix th { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); font-weight: var(--cds-font-weight-medium); }
+.ix th:first-child, .ix td:first-child { text-align: left; }
+.ix td.wrap { white-space: normal; text-align: left; min-width: 14rem; }
+.ix-controls { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); align-items: center; margin-bottom: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.ix-controls select { font: inherit; font-size: var(--cds-font-size-body); color: var(--color-fg); background: var(--color-bg); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: 4px 8px; }
+.ix-fail { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: inherit; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.ix-fail::before { content: ""; width: .375rem; height: .375rem; border-radius: 50%; background: var(--color-bad); }
+.ix-callout { border-left: 3px solid var(--color-fg); padding: var(--cds-pad-sm) var(--cds-pad-md); background: var(--color-bg); border-radius: 0 var(--cds-radius) var(--cds-radius) 0; }
+.ix-up { color: var(--color-ok); } .ix-down { color: var(--color-bad); }
+.ix a { color: inherit; }
+[data-dash-source-state=empty] { color: transparent; }
+[data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+</style>
+
+<div class="ix">
+  <div class="ix-head" id="top">
+    <h1>India Oil Market Deep Dive</h1>
+    <p id="takeaway" data-source="kpi export_change russia_share" class="dash-skeleton">—</p>
+  </div>
+
+  <div class="ix-tabs" role="tablist" aria-label="Sections">
+    <button class="ix-tab" role="tab" id="tab-overview" data-page="overview">Overview</button>
+    <button class="ix-tab" role="tab" id="tab-range" data-page="range">2026 vs 2021–25 range</button>
+    <button class="ix-tab" role="tab" id="tab-crude" data-page="crude">Crude and the slate shift</button>
+    <button class="ix-tab" role="tab" id="tab-price" data-page="price">Price and import bill</button>
+    <button class="ix-tab" role="tab" id="tab-refining" data-page="refining">Refiners and yields</button>
+    <button class="ix-tab" role="tab" id="tab-products" data-page="products">Products: the proof</button>
+    <button class="ix-tab" role="tab" id="tab-scenarios" data-page="scenarios">If Russia goes</button>
+    <button class="ix-tab" role="tab" id="tab-notes" data-page="notes">Notes and sources</button>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section class="ix-page" id="overview" role="tabpanel">
+    <div class="ix-kpis">
+      <div class="ix-kpi"><span class="k">Crude imports, Apr–Sep 2026</span><span class="v" data-source="kpi" data-field="avg_mbd" data-row="0">—</span><span class="s">million b/d · FY24-25 record <span data-source="kpi" data-field="record_mbd" data-row="0">—</span></span></div>
+      <div class="ix-kpi"><span class="k">Indian basket, Oct 2026 to date</span><span class="v" data-source="basket_price" data-field="usd_bbl" data-where="month=2026-10">—</span><span class="s">US$/bbl · Jan 2026 <span data-source="basket_price" data-field="usd_bbl" data-where="month=2026-01">—</span></span></div>
+      <div class="ix-kpi"><span class="k">Brent share of basket, Oct 2026</span><span class="v" data-source="basket_ratio" data-field="brent_share_pct" data-where="period=2026-10">—</span><span class="s">% · peak Jul <span data-source="basket_ratio" data-field="brent_share_pct" data-where="period=2026-07">—</span> · FY25-26 <span data-source="basket_ratio" data-field="brent_share_pct" data-where="period=2025-26">—</span></span></div>
+      <div class="ix-kpi"><span class="k">Russia's share of imports, Sep 2026</span><span class="v" data-source="russia_share" data-field="share_pct" data-where="month=2026-09">—</span><span class="s">% · Jul <span data-source="russia_share" data-field="share_pct" data-where="month=2026-07">—</span></span></div>
+      <div class="ix-kpi"><span class="k">Diesel crack, Oct 2026 to date</span><span class="v" data-source="cracks" data-field="diesel_crack" data-where="month=2026-10">—</span><span class="s">US$/bbl over the Indian basket · FY24-25 avg <span data-source="crack_avg" data-field="diesel_crack" data-where="period=FY2024-25">—</span></span></div>
+      <div class="ix-kpi"><span class="k">Jet fuel exports vs FY24-25</span><span class="v" data-source="export_change" data-field="change_pct" data-where="product=Jet fuel">—</span><span class="s">% change, annualised</span></div>
+      <div class="ix-kpi"><span class="k">Fuel oil exports vs FY24-25</span><span class="v" data-source="export_change" data-field="change_pct" data-where="product=Fuel oil">—</span><span class="s">% change, annualised</span></div>
+    </div>
+
+    <div class="ix-card" id="case">
+      <h2>The case in four steps</h2>
+      <div class="ix-prose" style="margin-top:var(--cds-gap-sm)">
+        <ul>
+          <li><b>India kept buying.</b> Volume held through the Hormuz shock and, by September, was running slightly above the record year, because refiners swapped suppliers fast.</li>
+          <li><b>On paper, the slate flipped to Brent.</b> The official Indian Crude Basket went from about a fifth Dated Brent to about three quarters in a few months.</li>
+          <li><b>Physically, it didn't.</b> Most of the Brent-priced barrels were Russian Urals, a medium sour crude priced off Dated Brent. Product exports confirm it: jet exports fell and fuel oil exports rose, the opposite of what a lighter slate would do.</li>
+          <li><b>That creates new exposures.</b> Indian refiners pay Brent-linked prices for Dubai-quality crude: a Brent–Dubai spread exposure, a bigger import bill, and a sourcing problem if Russian supply goes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ix-grid">
+      <div class="ix-card" id="ov-ratio">
+        <h3>The Brent share jumped in 2026, then started to fall back</h3>
+        <p class="ix-note">Dated Brent share of the Indian Crude Basket, % (monthly from March 2026)</p>
+        <div class="ix-chart" id="ov-ratio-chart" data-source="basket_ratio"></div>
+      </div>
+      <div class="ix-card" id="ov-proof">
+        <h3>But jet stayed flat while fuel oil rose</h3>
+        <p class="ix-note">Exports as % of crude imports, FY2026-27, against FY2024-25 (dotted)</p>
+        <div class="ix-chart" id="ov-proof-chart" data-source="export_ratio"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RANGE -->
+  <section class="ix-page" id="range" role="tabpanel" hidden>
+    <div class="ix-card" id="range-intro">
+      <h2>2026 against the 2021–2025 range</h2>
+      <p class="ix-note" style="margin-bottom:0">Each monthly series for 2026, through the latest month published, compared with the same month in earlier years. Blue is above the average of those years, orange below; an outlined cell is outside the whole range. All series span 2021–2025 (trade from PPAC's FY2020-21 to FY2025-26 files). Hover a cell for the values.</p>
+    </div>
+    <div class="ix-card" id="range-heat">
+      <h3>Every series at a glance: % difference from the earlier-year average</h3>
+      <p class="ix-note">Crude imports in million b/d, trade in thousand tonnes a month, prices and cracks in US$/bbl. Cracks are compared in US$/bbl difference, not %, because they can sit close to zero.</p>
+      <div class="ix-legend" id="heat-legend"></div>
+      <div class="ix-chart" id="heat-chart" data-source="range_stats" style="margin-top:var(--cds-gap-sm)"></div>
+    </div>
+    <div class="ix-card" id="range-detail">
+      <h3 id="range-detail-title">Monthly detail</h3>
+      <p class="ix-note">Shaded band: range of earlier years. Dashed: their average. Grey line: the latest full earlier year. Blue: 2026; a hollow dot is outside the range.</p>
+      <div class="ix-controls" id="range-chips" role="group" aria-label="Series group"></div>
+      <div class="ix-chart" id="sm-chart" data-source="range_stats"></div>
+    </div>
+  </section>
+
+  <!-- CRUDE -->
+  <section class="ix-page" id="crude" role="tabpanel" hidden>
+    <div class="ix-grid">
+      <div class="ix-card" id="crude-annual">
+        <h3>Crude imports grew six-fold in 25 years</h3>
+        <p class="ix-note">Crude imports by financial year (April–March), million tonnes</p>
+        <div class="ix-chart" id="crude-annual-chart" data-source="annual"></div>
+      </div>
+      <div class="ix-card" id="crude-monthly">
+        <h3>The 2026 shock barely dented volume</h3>
+        <p class="ix-note">Monthly crude imports, million b/d, against the FY2024-25 average (dashed). August–September provisional.</p>
+        <div class="ix-chart" id="crude-monthly-chart" data-source="monthly kpi"></div>
+      </div>
+    </div>
+    <div class="ix-card" id="ratio-long">
+      <h3>25 years of drift toward sour crude, broken in 2026</h3>
+      <p class="ix-note">Dated Brent share of the Indian Crude Basket, %. Annual weights to FY2025-26; monthly from March 2026 (Ministry order of 26 March 2026).</p>
+      <div class="ix-chart" id="ratio-long-chart" data-source="basket_ratio"></div>
+    </div>
+    <div class="ix-grid">
+      <div class="ix-card" id="russia">
+        <h3>The Brent-linked barrels were mostly Russian</h3>
+        <p class="ix-note">Crude imports by source, million b/d. Kpler ship-tracking as reported by Business Standard and ThePrint.</p>
+        <div class="ix-chart" id="russia-chart" data-source="russia_share"></div>
+      </div>
+      <div class="ix-card" id="sep-suppliers">
+        <h3>September: Russia first, the Gulf back, the Atlantic small</h3>
+        <p class="ix-note">September 2026 suppliers, million b/d, colored by how the crude is priced</p>
+        <div class="ix-chart" id="sep-chart" data-source="suppliers"></div>
+      </div>
+    </div>
+    <div class="ix-card" id="quality">
+      <h3>On paper the slate got lighter and sweeter; physically it barely moved</h3>
+      <p class="ix-note">API gravity (higher is lighter) against sulfur (higher is sourer). Diamonds are baskets: pre-war 20/80, paper 65/35, and the estimated September mix. Dots are benchmark grades.</p>
+      <div class="ix-chart tall" id="quality-chart" data-source="quality"></div>
+    </div>
+  </section>
+
+  <!-- PRICE -->
+  <section class="ix-page" id="price" role="tabpanel" hidden>
+    <div class="ix-card" id="price-line">
+      <h3>The Indian basket is back above $120</h3>
+      <p class="ix-note">Indian Crude Basket, US$/bbl, monthly average. October 2026 is month to date (PPAC table posted 28 October).</p>
+      <div class="ix-chart tall" id="price-chart" data-source="basket_price"></div>
+    </div>
+    <div class="ix-card" id="cracks-card">
+      <h3>Refining margins: diesel cracks are running at several times normal</h3>
+      <p class="ix-note">Crack = product FOB price minus the Indian Crude Basket, US$/bbl, monthly averages (PPAC international prices). Dashed: FY2024-25 average. October 2026 is month to date (table posted 28 October).</p>
+      <div class="ix-chart tall" id="cracks-chart" data-source="cracks crack_avg"></div>
+      <p class="ix-note" style="margin:var(--cds-gap-sm) 0 0">Wide diesel cracks mean big margins for export refiners such as Reliance and Nayara, and a reason to lock some of them in: Singapore gasoil crack swaps against Dubai let a refiner sell forward margin at levels well above its history.</p>
+    </div>
+    <div class="ix-card" id="bill">
+      <h3>What India paid, April–September 2026</h3>
+      <p class="ix-note">Customs values in ₹ crore; US$ at the monthly rupee rate from the Mumbai Port Authority. Customs values lag market prices by about a month. September uses the rate implied by PPAC's rupee and dollar files (₹95.3), and its product lines are pro-rated from August.</p>
+      <div class="ix-tablewrap">
+        <table id="bill-table" data-source="bill" data-row-key="month">
+          <thead><tr><th data-field="month">Month</th><th data-field="crude_cr">Crude ₹ cr</th><th data-field="product_imports_cr">Product imports ₹ cr</th><th data-field="product_exports_cr">Product exports ₹ cr</th><th data-field="net_cr">Net bill ₹ cr</th><th data-field="inr_per_usd">₹ per US$</th><th data-field="net_usd_bn">Net bill US$ bn</th><th data-field="crude_usd_per_bbl">Crude US$/bbl</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="ix-note" style="margin:var(--cds-gap-sm) 0 0">State refiners carry this cost on their balance sheets while retail prices are managed, so working-capital needs rise with every price spike. That is the opening for prepayment, trade finance and price hedging.</p>
+    </div>
+  </section>
+
+  <!-- REFINING -->
+  <section class="ix-page" id="refining" role="tabpanel" hidden>
+    <div class="ix-card" id="refiners">
+      <h3>Five groups hold most of India's refining capacity</h3>
+      <p class="ix-note">Capacity at 1 April 2026 (PPAC) and equipment mix by Nelson complexity: simple below 7, cracking 7–10, full conversion 10 and above.</p>
+      <div class="ix-tablewrap">
+        <table id="refiners-table" data-source="refiners" data-row-key="refiner">
+          <thead><tr><th data-field="refiner">Refiner</th><th data-field="capacity_mt">Capacity Mt/yr</th><th data-field="simple_pct">Simple %</th><th data-field="cracking_pct">Cracking %</th><th data-field="full_pct">Full conversion %</th><th data-field="how_they_buy" style="text-align:left">How they buy</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="ix-card" id="grade-yields">
+      <h3>The same crude is worth more to a complex refiner</h3>
+      <p class="ix-note">Light products (LPG, petrol, jet, diesel) as % of crude by weight. Indicative model: an upper bound, best for ranking crudes rather than exact levels.</p>
+      <div class="ix-controls"><label for="yield-metric">Show</label>
+        <select id="yield-metric"><option value="light_pct">Light products</option><option value="diesel_pct">Diesel</option></select>
+      </div>
+      <div class="ix-chart tall" id="grade-chart" data-source="grade_yields"></div>
+    </div>
+    <div class="ix-grid">
+      <div class="ix-card" id="slate">
+        <h3>Brazil pre-salt is a diesel crude; Gulf sour makes the most petcoke</h3>
+        <p class="ix-note">Product slate at a full-conversion refinery, % of crude by weight</p>
+        <div class="ix-chart tall" id="slate-chart" data-source="full_conversion_slate"></div>
+      </div>
+      <div class="ix-card" id="accuracy">
+        <h3>Checked against real refineries, the model runs high</h3>
+        <p class="ix-note">Distillate yield, %: PPAC actual against the model with Gulf sour crude. Close for Paradip and Panipat; too high where complexity scores overstate residue conversion.</p>
+        <div class="ix-chart" id="acc-chart" data-source="accuracy"></div>
+      </div>
+    </div>
+    <div class="ix-card"><p class="ix-prose" style="margin:0">To change the crude mix and see what each refiner makes, open the <a href="https://claude.ai/artifact/4HGfAnWu9k6zqoaGN7CeVC" target="_blank" rel="noopener">India Refinery Yield Simulator</a>.</p></div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="ix-page" id="products" role="tabpanel" hidden>
+    <div class="ix-card ix-callout" id="proof-callout">
+      <p class="ix-prose" style="margin:0">If the 65/35 basket were the real slate, refiners would make more jet and naphtha and less fuel oil. The export data shows the opposite. That is the evidence that the Brent share rose because Urals is priced off Brent, not because India bought lighter crude.</p>
+    </div>
+    <div class="ix-card" id="proof">
+      <h3>As the Brent share rose, jet stayed flat and fuel oil tripled</h3>
+      <p class="ix-note">Bars: exports as % of crude imports. Line: Brent share of the basket (right axis). Dotted: FY2024-25 levels. September is the first month with Russia down to a third of imports: jet exports rose to their highest of the year and fuel oil eased. One month is too early to call a turn.</p>
+      <div class="ix-chart tall" id="proof-chart" data-source="export_ratio"></div>
+    </div>
+    <div class="ix-grid">
+      <div class="ix-card" id="changes">
+        <h3>Jet fell furthest; fuel oil is the only product exported more</h3>
+        <p class="ix-note">FY2026-27 annualised (April–September) against FY2024-25, % change in volume</p>
+        <div class="ix-chart" id="change-chart" data-source="export_change"></div>
+      </div>
+      <div class="ix-card" id="trade">
+        <h3>India pulled back from product trade to protect its own market</h3>
+        <p class="ix-note">Monthly product trade, thousand tonnes. August–September use pro-rated customs data.</p>
+        <div class="ix-chart" id="trade-chart" data-source="monthly"></div>
+      </div>
+    </div>
+    <div class="ix-grid">
+      <div class="ix-card" id="demand">
+        <h3>A diesel and LPG economy</h3>
+        <p class="ix-note">PPAC original estimate of FY2026-27 demand by region, thousand tonnes</p>
+        <div class="ix-tablewrap">
+          <table id="demand-table" data-source="demand" data-row-key="region">
+            <thead><tr><th data-field="region">Region</th><th data-field="lpg_kt">LPG</th><th data-field="petrol_kt">Petrol</th><th data-field="diesel_kt">Diesel</th><th data-field="jet_kt">Jet fuel</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ix-card" id="gas">
+        <h3>Gas: domestic output slipped, LNG filled the gap</h3>
+        <p class="ix-note">August, million standard cubic metres</p>
+        <div class="ix-tablewrap">
+          <table id="gas-table" data-source="gas_change" data-row-key="metric">
+            <thead><tr><th data-field="metric">Measure</th><th data-field="aug_2025">Aug 2025</th><th data-field="aug_2026">Aug 2026</th><th data-field="change_pct">Change %</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENARIOS -->
+  <section class="ix-page" id="scenarios" role="tabpanel" hidden>
+    <div class="ix-card" id="scen-text">
+      <h2>What if India stops buying Russian crude?</h2>
+      <div class="ix-prose" style="margin-top:var(--cds-gap-sm)">
+        <p>About <span data-source="suppliers" data-field="mbd" data-where="month=2026-09&amp;supplier=Russia">—</span> million b/d has to come from somewhere else. Which supplier fills it decides everything.</p>
+        <ul>
+          <li><b>The Gulf replaces Russia</b> (most likely). Saudi, Iraqi and UAE crude is close to Urals in quality, so refinery output barely changes. The basket's Brent share falls back toward its old level, and pricing lines up with quality again. More Asian buying of Gulf crude firms Dubai against Brent.</li>
+          <li><b>The Atlantic Basin replaces Russia.</b> US, Brazilian, Guyanese and West African crude is lighter, so jet and petrol output rise and fuel oil and petcoke fall. This only works when Brent is cheap enough against Dubai for the cargoes to sail east.</li>
+          <li><b>Losing the discount costs India money.</b> At a $10/bbl Urals discount, replacing Russian barrels costs about US$<span data-source="discount_cost" data-field="usd_bn_per_year" data-row="0">—</span> billion a year.</li>
+        </ul>
+        <p>Signal to watch: if the basket's Brent share and India's jet exports both rise, India is really switching to Atlantic crude. If the Brent share falls and jet stays flat, it's the Gulf.</p>
+      </div>
+    </div>
+    <div class="ix-card" id="scen-chart-card">
+      <h3>Modelled change in India-wide output against September 2026</h3>
+      <p class="ix-note">Thousand tonnes a month, from the yield model at 5.3 mb/d of crude runs. Illustrations, not forecasts.</p>
+      <div class="ix-controls"><label for="scen-pick">Scenario</label><select id="scen-pick"></select></div>
+      <div class="ix-chart" id="scen-chart" data-source="scenario_change"></div>
+    </div>
+  </section>
+
+<!-- NOTES -->
+  <section class="ix-page" id="notes" role="tabpanel" hidden>
+    <div class="ix-card">
+      <h2>Notes and sources</h2>
+      <div class="ix-prose" style="margin-top:var(--cds-gap-sm)">
+        <ul>
+          <li>Tonnes are converted to barrels at 7.33 barrels per tonne; the true factor varies by grade. India's financial year runs April to March.</li>
+          <li>FY2026-27 data are provisional (PPAC file to September 2026). August–September use pro-rated customs data, which is why some product lines look alike across those months; earlier months have been revised as final data arrived. History comes from PPAC's FY2020-21 to FY2024-25 file and its separate FY2025-26 file.</li>
+          <li>The ATF export series excludes jet sold to foreign airlines in India. Reliance's export refinery dominates exports, and exports are what's left after domestic demand.</li>
+          <li>Supplier volumes are ship-tracking estimates (Kpler, via Business Standard and ThePrint). The September quality mix is an estimate from those shares and Platts grade data.</li>
+          <li>Refinery yields come from an indicative model (published assays from TotalEnergies, ExxonMobil and the Pearl Sweet prospectus; Nelson complexity by refinery). It runs 2–5 points high against PPAC refinery data. Urals and Arab Light have no free assay and use stand-ins.</li>
+          <li>Sources: PPAC (Ministry of Petroleum and Natural Gas) import/export, basket price, diesel and petrol FOB international prices, basket ratio, refining capacity, demand estimate and gas report; Mumbai Port Authority exchange rates; Platts Periodic Table of Oil (Sep 2026); Kpler; Platts for Urals differentials.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ---------- calcs ----------
+dash.calc('kpi', {
+  title: 'Headline import figures',
+  description: 'Average FY2026-27 crude imports to date in million b/d (tonnes × 7.33 ÷ days in the months covered), annualised tonnes, and the FY2024-25 record in b/d.',
+  inputs: ['monthly', 'annual'],
+  fn: (monthly, annual) => {
+    const kt = monthly.reduce((a, r) => a + r.crude_kt, 0);
+    const days = monthly.reduce((a, r) => a + new Date(Date.UTC(+r.month.slice(0, 4), +r.month.slice(5, 7), 0)).getUTCDate(), 0);
+    const rec = annual.find(r => r.fy === '2024-25');
+    return [{
+      avg_mbd: Math.round(kt * 7.33 / days) / 1000,
+      annualised_mt: Math.round(kt / days * 365 / 100) / 10,
+      record_mbd: Math.round(rec.crude_kt * 7.33 / 365) / 1000,
+      record_mt: Math.round(rec.crude_kt / 100) / 10
+    }];
+  }
+});
+dash.calc('export_change', {
+  title: 'Exports vs FY2024-25',
+  description: 'FY2026-27 exports to date annualised (× 12 ÷ months covered) against FY2024-25, % change.',
+  inputs: ['monthly', 'annual'],
+  fn: (monthly, annual) => {
+    const base = annual.find(r => r.fy === '2024-25');
+    const items = [['Jet fuel', 'jet_exports_kt'], ['Diesel', 'diesel_exports_kt'], ['Total product exports', 'product_exports_kt'], ['Petrol', 'petrol_exports_kt'], ['Naphtha', 'naphtha_exports_kt'], ['Fuel oil', 'fuel_oil_exports_kt']];
+    return items.map(([product, col]) => {
+      const ann = monthly.reduce((a, r) => a + r[col], 0) * 12 / monthly.length;
+      return { product, change_pct: Math.round((ann / base[col] - 1) * 100) };
+    });
+  }
+});
+dash.calc('export_ratio', {
+  title: 'Exports as % of crude',
+  description: 'Jet and fuel oil exports divided by crude imports each month, with FY2024-25 for reference and the basket Brent share.',
+  inputs: ['monthly', 'annual'],
+  fn: (monthly, annual) => {
+    const b = annual.find(r => r.fy === '2024-25');
+    return monthly.map(r => ({
+      month: r.month,
+      jet_pct: Math.round(r.jet_exports_kt / r.crude_kt * 1000) / 10,
+      fuel_oil_pct: Math.round(r.fuel_oil_exports_kt / r.crude_kt * 1000) / 10,
+      brent_share_pct: r.brent_share_pct,
+      jet_fy2425_pct: Math.round(b.jet_exports_kt / b.crude_kt * 1000) / 10,
+      fuel_oil_fy2425_pct: Math.round(b.fuel_oil_exports_kt / b.crude_kt * 1000) / 10
+    }));
+  }
+});
+dash.calc('russia_share', {
+  title: 'Russia share of imports',
+  description: 'Russian crude as a share of total imports per month (Russia ÷ sum of all suppliers listed).',
+  inputs: ['suppliers'],
+  fn: (suppliers) => {
+    const months = [...new Set(suppliers.map(r => r.month))];
+    return months.map(m => {
+      const rows = suppliers.filter(r => r.month === m);
+      const total = rows.reduce((a, r) => a + r.mbd, 0);
+      const ru = rows.find(r => r.supplier === 'Russia').mbd;
+      return { month: m, russia_mbd: ru, other_mbd: Math.round((total - ru) * 100) / 100, total_mbd: Math.round(total * 100) / 100, share_pct: Math.round(ru / total * 100) };
+    });
+  }
+});
+dash.calc('bill', {
+  title: 'Import bill with US$',
+  description: 'Net bill = crude + product imports − product exports (₹ crore); US$ bn = ₹ crore × 10^7 ÷ rate ÷ 10^9; crude US$/bbl uses monthly crude tonnes × 7.33.',
+  inputs: ['import_bill', 'monthly'],
+  fn: (import_bill, monthly) => import_bill.map(r => {
+    const net = r.crude_cr + r.product_imports_cr - r.product_exports_cr;
+    const kt = monthly.find(m => m.month === r.month).crude_kt;
+    return { ...r, net_cr: net, net_usd_bn: Math.round(net * 1e7 / r.inr_per_usd / 1e8) / 10, crude_usd_per_bbl: Math.round(r.crude_cr * 1e7 / r.inr_per_usd / (kt * 1000 * 7.33)) };
+  })
+});
+dash.calc('gas_change', {
+  title: 'Gas change',
+  description: 'August 2026 against August 2025, % change.',
+  inputs: ['gas'],
+  fn: (gas) => gas.map(r => ({ ...r, change_pct: Math.round((r.aug_2026 / r.aug_2025 - 1) * 1000) / 10 }))
+});
+dash.calc('scenario_change', {
+  title: 'Scenario change vs Sep 2026',
+  description: 'Each scenario minus the September 2026 mix, thousand tonnes a month, by product.',
+  inputs: ['scenarios'],
+  fn: (scenarios) => {
+    const base = scenarios.find(r => r.scenario.startsWith('Sep 2026'));
+    const out = [];
+    scenarios.forEach(s => {
+      [['Jet / kerosene', 'jet_kt'], ['Petrol / naphtha', 'petrol_kt'], ['Diesel', 'diesel_kt'], ['LPG', 'lpg_kt'], ['Fuel oil', 'fuel_oil_kt'], ['Petcoke', 'petcoke_kt']].forEach(([product, col]) => {
+        out.push({ scenario: s.scenario, product, level_kt: s[col], change_kt: s[col] - base[col] });
+      });
+    });
+    return out;
+  }
+});
+dash.calc('range_stats', {
+  title: '2026 vs earlier-year range',
+  description: 'For each series and calendar month: the minimum, maximum and average of the same month in 2021–2025 (where available), the 2026 value, the latest full earlier year, and whether 2026 is above, below or within that range.',
+  inputs: ['range_long'],
+  fn: (range_long) => {
+    const out = [], keys = [...new Set(range_long.map(r => r.series))];
+    keys.forEach(sr => {
+      const rows = range_long.filter(r => r.series === sr);
+      const years = [...new Set(rows.filter(r => r.year < 2026).map(r => r.year))].sort();
+      const prevYear = years.filter(y => rows.filter(r => r.year === y).length >= 6).pop();
+      for (let m = 1; m <= 12; m++) {
+        const hist = rows.filter(r => r.month === m && r.year >= 2021 && r.year <= 2025);
+        if (!hist.length) continue;
+        const v = hist.map(r => r.value), cur = rows.find(r => r.month === m && r.year === 2026), prev = rows.find(r => r.month === m && r.year === prevYear);
+        const mn = Math.min(...v), mx = Math.max(...v), yrs = hist.map(r => r.year);
+        const val = cur ? cur.value : null;
+        out.push({ group: rows[0].group, series: sr, unit: rows[0].unit, month: m, years: Math.min(...yrs) + '–' + String(Math.max(...yrs)).slice(2), n_years: hist.length,
+          min: mn, max: mx, avg: Math.round(v.reduce((a, b) => a + b, 0) / v.length * 1000) / 1000, value_2026: val, prev_year: prevYear, prev: prev ? prev.value : null,
+          position: val === null ? 'no data' : val > mx ? 'above range' : val < mn ? 'below range' : 'within range' });
+      }
+    });
+    return out;
+  }
+});
+dash.calc('cracks', {
+  title: 'Diesel and petrol cracks',
+  description: 'Monthly diesel FOB and petrol FOB international prices minus the Indian Crude Basket, US$/bbl.',
+  inputs: ['product_prices'],
+  fn: (product_prices) => product_prices.map(r => ({ month: r.month, diesel_crack: Math.round((r.diesel_usd_bbl - r.basket_usd_bbl) * 10) / 10, petrol_crack: Math.round((r.petrol_usd_bbl - r.basket_usd_bbl) * 10) / 10 }))
+});
+dash.calc('crack_avg', {
+  title: 'Average cracks by period',
+  description: 'Average diesel and petrol cracks over FY2024-25 (April 2024 to March 2025) and over FY2026-27 to date.',
+  inputs: ['cracks'],
+  fn: (cracks) => {
+    const avg = (rows, k) => Math.round(rows.reduce((a, r) => a + r[k], 0) / rows.length * 10) / 10;
+    const a = cracks.filter(r => r.month >= '2024-04' && r.month <= '2025-03'), b = cracks.filter(r => r.month >= '2026-04');
+    return [{ period: 'FY2024-25', diesel_crack: avg(a, 'diesel_crack'), petrol_crack: avg(a, 'petrol_crack') }, { period: 'FY2026-27 to date', diesel_crack: avg(b, 'diesel_crack'), petrol_crack: avg(b, 'petrol_crack') }];
+  }
+});
+dash.calc('discount_cost', {
+  title: 'Cost of losing the Urals discount',
+  description: 'September Russian volume × $10/bbl discount × 365 days, in US$ billion a year.',
+  inputs: ['suppliers'],
+  fn: (suppliers) => {
+    const ru = suppliers.find(r => r.month === '2026-09' && r.supplier === 'Russia').mbd;
+    return [{ usd_bn_per_year: Math.round(ru * 10 * 365 / 100) / 10 }];
+  }
+});
+</script>
+
+<script>
+// ---------- shared drawing helpers ----------
+window.IX = (function () {
+  const fmt0 = d3.format(','), fmt1 = d3.format(',.1f');
+  function status(...ids) {
+    const s = ids.map(id => dash.data(id));
+    if (s.some(x => x.status === 'error' || x.status === 'connect' || x.status === 'declined' || x.status === 'missing')) return 'error';
+    if (s.some(x => x.status !== 'ok')) return 'loading';
+    return 'ok';
+  }
+  function prep(el, ids) {
+    const st = status(...ids);
+    el.innerHTML = '';
+    if (st === 'error') { const d = document.createElement('div'); d.className = 'ix-fail'; d.textContent = 'Failed to load'; el.appendChild(d); el.classList.remove('dash-skeleton'); return null; }
+    if (st === 'loading') { el.classList.add('dash-skeleton'); return null; }
+    el.classList.remove('dash-skeleton');
+    return ids.map(id => dash.data(id).data);
+  }
+  function tip(el) {
+    let t = el.querySelector('.ix-tip');
+    if (!t) { t = document.createElement('div'); t.className = 'ix-tip'; t.hidden = true; el.appendChild(t); }
+    return {
+      show(event, title, lines) {
+        t.replaceChildren();
+        const h = document.createElement('div'); h.className = 't'; h.textContent = title; t.appendChild(h);
+        lines.forEach(([c, label, value]) => { const l = document.createElement('div'); if (c) { const i = document.createElement('i'); i.style.background = c; l.appendChild(i); } l.appendChild(document.createTextNode(label + (label ? ': ' : '') + value)); t.appendChild(l); });
+        t.hidden = false;
+        const r = el.getBoundingClientRect(); let x = event.clientX - r.left + 12, y = event.clientY - r.top + 12;
+        const w = t.offsetWidth, h2 = t.offsetHeight;
+        if (x + w > el.clientWidth) x = Math.max(0, event.clientX - r.left - w - 12);
+        if (y + h2 > el.clientHeight) y = Math.max(0, event.clientY - r.top - h2 - 12);
+        t.style.left = x + 'px'; t.style.top = y + 'px';
+      },
+      hide() { t.hidden = true; }
+    };
+  }
+  function svg(el, h) {
+    const w = Math.max(280, el.clientWidth);
+    const s = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${w} ${h}`).attr('height', h);
+    return { s, w, h };
+  }
+  function axisStyle(g) {
+    g.attr('font-size', null).attr('font-family', null);
+    g.selectAll('text').attr('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)');
+    g.selectAll('line').attr('stroke', 'var(--cds-chart-grid)');
+    g.select('.domain').attr('stroke', 'var(--cds-chart-axis)');
+  }
+  function legend(el, items) {
+    const d = document.createElement('div'); d.className = 'ix-legend';
+    items.forEach(([c, label]) => { const s = document.createElement('span'); const i = document.createElement('i'); i.style.background = c; s.appendChild(i); s.appendChild(document.createTextNode(label)); d.appendChild(s); });
+    el.appendChild(d);
+  }
+  const mon = d3.utcFormat('%b %y'), monShort = d3.utcFormat('%b');
+  const parseM = (m) => new Date(m + '-01T00:00:00Z');
+  // FY label: '2024-25' -> 'FY25' (the year the financial year ends)
+  const fy = (p) => 'FY' + String((+p.slice(0, 4) + 1) % 100).padStart(2, '0');
+  // pick evenly spaced tick values, always including the last one
+  const evenTicks = (vals, width, minGap) => { const every = Math.max(1, Math.ceil(vals.length * minGap / Math.max(1, width))); return vals.filter((_, i) => (vals.length - 1 - i) % every === 0); };
+  // push labels apart vertically so none overlap (items: {y}), keeps order
+  const spread = (items, gap) => { items.sort((a, b) => a.y - b.y); for (let i = 1; i < items.length; i++) if (items[i].y - items[i - 1].y < gap) items[i].y = items[i - 1].y + gap; return items; };
+  return { fy, evenTicks, spread, status, prep, tip, svg, axisStyle, legend, fmt0, fmt1, mon, monShort, parseM };
+})();
+</script>
+
+<script>
+// ---------- tabs ----------
+(function () {
+  const tabs = [...document.querySelectorAll('.ix-tab')];
+  window.IX.current = 'overview';
+  function show(id, link) {
+    tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.page === id)));
+    document.querySelectorAll('.ix-page').forEach(p => { p.hidden = p.id !== id; });
+    window.IX.current = id;
+    if (link) dash.setLink(id);
+    window.IX.redraw && window.IX.redraw();
+  }
+  tabs.forEach(t => t.addEventListener('click', () => show(t.dataset.page, true)));
+  const h = location.hash.slice(1);
+  show(tabs.some(t => t.dataset.page === h) ? h : 'overview', false);
+  window.IX.show = show;
+})();
+</script>
+
+<script>
+// ---------- charts ----------
+(function () {
+  const IX = window.IX, C = dash.colors;
+
+  function ratioMonthly(el) {
+    const d = IX.prep(el, ['basket_ratio']); if (!d) return;
+    const rows = d[0].filter(r => r.kind === 'monthly');
+    const base = d[0].find(r => r.period === '2025-26');
+    const { s, w, h } = IX.svg(el, 280); const m = { t: 18, r: 10, b: 26, l: 34 };
+    const x = d3.scaleBand(rows.map(r => r.period), [m.l, w - m.r]).padding(0.3);
+    const y = d3.scaleLinear([0, 100], [h - m.b, m.t]);
+    s.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickSize(-(w - m.l - m.r))).call(IX.axisStyle).call(g => g.select('.domain').remove());
+    s.append('g').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).tickFormat(p => IX.monShort(IX.parseM(p)))).call(IX.axisStyle);
+    const t = IX.tip(el);
+    s.append('g').selectAll('rect').data(rows).join('rect').attr('x', r => x(r.period)).attr('width', x.bandwidth()).attr('y', r => y(r.brent_share_pct)).attr('height', r => y(0) - y(r.brent_share_pct)).attr('rx', 4)
+      .attr('fill', r => r.period === '2026-07' ? C[0] : r.period === '2026-10' ? C[1] : 'var(--cds-chart-muted)')
+      .on('mousemove', (e, r) => t.show(e, IX.mon(IX.parseM(r.period)), [['', 'Brent share', IX.fmt1(r.brent_share_pct) + '%']])).on('mouseleave', t.hide);
+    s.append('g').selectAll('text').data(rows).join('text').attr('x', r => x(r.period) + x.bandwidth() / 2).attr('y', r => y(r.brent_share_pct) - 5).attr('text-anchor', 'middle').attr('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').text(r => Math.round(r.brent_share_pct));
+    if (base) {
+      s.append('line').attr('x1', m.l).attr('x2', w - m.r).attr('y1', y(base.brent_share_pct)).attr('y2', y(base.brent_share_pct)).attr('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '4 3');
+      s.append('text').attr('x', w - m.r).attr('y', y(base.brent_share_pct) - 5).attr('text-anchor', 'end').attr('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text('FY25-26: ' + Math.round(base.brent_share_pct) + '%');
+    }
+  }
+
+  function proof(el, h) {
+    const d = IX.prep(el, ['export_ratio']); if (!d) return;
+    const rows = d[0];
+    const { s, w } = IX.svg(el, h); const m = { t: 20, r: 40, b: 26, l: 38 };
+    const x0 = d3.scaleBand(rows.map(r => r.month), [m.l, w - m.r]).padding(0.25);
+    const x1 = d3.scaleBand(['jet_pct', 'fuel_oil_pct'], [0, x0.bandwidth()]).padding(0.1);
+    const ymax = Math.max(4, d3.max(rows, r => Math.max(r.jet_pct, r.fuel_oil_pct, r.jet_fy2425_pct)) * 1.25);
+    const y = d3.scaleLinear([0, ymax], [h - m.b, m.t]);
+    const yr = d3.scaleLinear([0, 100], [h - m.b, m.t]);
+    s.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickFormat(v => v + '%').tickSize(-(w - m.l - m.r))).call(IX.axisStyle).call(g => g.select('.domain').remove());
+    s.append('g').attr('transform', `translate(${w - m.r},0)`).call(d3.axisRight(yr).ticks(5).tickFormat(v => v + '%')).call(IX.axisStyle).call(g => g.selectAll('line').remove());
+    s.append('g').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x0).tickFormat(p => IX.monShort(IX.parseM(p)))).call(IX.axisStyle);
+    const col = { jet_pct: C[0], fuel_oil_pct: C[1] };
+    const t = IX.tip(el);
+    const g = s.append('g').selectAll('g').data(rows).join('g').attr('transform', r => `translate(${x0(r.month)},0)`);
+    g.selectAll('rect').data(r => ['jet_pct', 'fuel_oil_pct'].map(k => ({ k, v: r[k], r }))).join('rect')
+      .attr('x', o => x1(o.k)).attr('width', x1.bandwidth()).attr('y', o => y(o.v)).attr('height', o => y(0) - y(o.v)).attr('rx', 4).attr('fill', o => col[o.k])
+      .on('mousemove', (e, o) => t.show(e, IX.mon(IX.parseM(o.r.month)), [[C[0], 'Jet exports', o.r.jet_pct + '% of crude'], [C[1], 'Fuel oil exports', o.r.fuel_oil_pct + '% of crude'], [C[2], 'Brent share', IX.fmt1(o.r.brent_share_pct) + '%']])).on('mouseleave', t.hide);
+    const f = rows[0];
+    [['jet_fy2425_pct', C[0], 'Jet FY24-25'], ['fuel_oil_fy2425_pct', C[1], 'Fuel oil FY24-25']].forEach(([k, c, lab]) => {
+      s.append('line').attr('x1', m.l).attr('x2', w - m.r).attr('y1', y(f[k])).attr('y2', y(f[k])).attr('stroke', c).attr('stroke-dasharray', '2 3').attr('stroke-width', 1.5);
+      s.append('text').attr('x', m.l + 4).attr('y', y(f[k]) - 4).attr('fill', c).style('font-size', 'var(--cds-font-size-caption)').text(lab + ': ' + f[k] + '%');
+    });
+    const line = d3.line().x(r => x0(r.month) + x0.bandwidth() / 2).y(r => yr(r.brent_share_pct));
+    s.append('path').datum(rows).attr('d', line).attr('fill', 'none').attr('stroke', C[2]).attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round');
+    s.append('g').selectAll('circle').data(rows).join('circle').attr('cx', r => x0(r.month) + x0.bandwidth() / 2).attr('cy', r => yr(r.brent_share_pct)).attr('r', 4).attr('fill', C[2]);
+    s.append('g').selectAll('text').data(rows).join('text').attr('x', r => x0(r.month) + x0.bandwidth() / 2).attr('y', r => yr(r.brent_share_pct) - 9).attr('text-anchor', 'middle').attr('fill', C[2]).style('font-size', 'var(--cds-font-size-caption)').text(r => Math.round(r.brent_share_pct) + '%');
+    IX.legend(el, [[C[0], 'Jet exports, % of crude'], [C[1], 'Fuel oil exports, % of crude'], [C[2], 'Brent share of basket (right axis)']]);
+  }
+
+  function crudeAnnual(el) {
+    const d = IX.prep(el, ['annual']); if (!d) return;
+    const rows = d[0];
+    const { s, w, h } = IX.svg(el, 280); const m = { t: 14, r: 8, b: 26, l: 40 };
+    const x = d3.scaleBand(rows.map(r => r.fy), [m.l, w - m.r]).padding(0.2);
+    const y = d3.scaleLinear([0, d3.max(rows, r => r.crude_kt / 1000) * 1.08], [h - m.b, m.t]).nice();
+    s.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickSize(-(w - m.l - m.r))).call(IX.axisStyle).call(g => g.select('.domain').remove());
+    s.append('g').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).tickValues(IX.evenTicks(rows.map(r => r.fy), w - m.l - m.r, 48)).tickFormat(IX.fy)).call(IX.axisStyle);
+    const t = IX.tip(el);
+    s.append('g').selectAll('rect').data(rows).join('rect').attr('x', r => x(r.fy)).attr('width', x.bandwidth()).attr('y', r => y(r.crude_kt / 1000)).attr('height', r => y(0) - y(r.crude_kt / 1000)).attr('rx', 3)
+      .attr('fill', r => r.fy === '2020-21' ? 'var(--cds-chart-status-critical)' : r.fy === '2024-25' ? C[0] : 'var(--cds-chart-muted)')
+      .on('mousemove', (e, r) => t.show(e, 'FY' + r.fy, [['', 'Crude imports', IX.fmt1(r.crude_kt / 1000) + ' Mt']])).on('mouseleave', t.hide);
+  }
+
+  function crudeMonthly(el) {
+    const d = IX.prep(el, ['monthly', 'kpi']); if (!d) return;
+    const rows = d[0], rec = d[1][0].record_mbd;
+    const { s, w, h } = IX.svg(el, 280); const m = { t: 18, r: 8, b: 26, l: 34 };
+    const x = d3.scaleBand(rows.map(r => r.month), [m.l, w - m.r]).padding(0.3);
+    const y = d3.scaleLinear([0, 6], [h - m.b, m.t]);
+    s.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(6).tickSize(-(w - m.l - m.r))).call(IX.axisStyle).call(g => g.select('.domain').remove());
+    s.append('g').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).tickFormat(p => IX.monShort(IX.parseM(p)))).call(IX.axisStyle);
+    const t = IX.tip(el);
+    s.append('g').selectAll('rect').data(rows).join('rect').attr('x', r => x(r.month)).attr('width', x.bandwidth()).attr('y', r => y(r.crude_mbd)).attr('height', r => y(0) - y(r.crude_mbd)).attr('rx', 4).attr('fill', C[0])
+      .on('mousemove', (e, r) => t.show(e, IX.mon(IX.parseM(r.month)), [['', 'Crude imports', r.crude_mbd + ' mb/d'], ['', '', IX.fmt0(r.crude_kt) + ' kt']])).on('mouseleave', t.hide);
+    s.append('g').selectAll('text').data(rows).join('text').attr('x', r => x(r.month) + x.bandwidth() / 2).attr('y', r => y(r.crude_mbd) - 5).attr('text-anchor', 'middle').attr('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').text(r => r.crude_mbd.toFixed(2));
+    s.append('line').attr('x1', m.l).attr('x2', w - m.r).attr('y1', y(rec)).attr('y2', y(rec)).attr('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '4 3');
+    s.append('text').attr('x', m.l + 4).attr('y', y(5.85)).attr('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text('FY24-25 average: ' + rec.toFixed(2) + ' mb/d (dashed)');
+  }
+
+  function ratioLong(el) {
+    const d = IX.prep(el, ['basket_ratio']); if (!d) return;
+    const rows = d[0].map((r, i) => ({ ...r, i, label: r.kind === 'annual' ? 'FY' + r.period : IX.mon(IX.parseM(r.period)) }));
+    const { s, w, h } = IX.svg(el, 280); const m = { t: 14, r: 10, b: 26, l: 34 };
+    const x = d3.scaleBand(rows.map(r => r.i), [m.l, w - m.r]).padding(0.15);
+    const y = d3.scaleLinear([0, 100], [h - m.b, m.t]);
+    s.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickSize(-(w - m.l - m.r))).call(IX.axisStyle).call(g => g.select('.domain').remove());
+    const firstM = rows.find(r => r.kind === 'monthly').i, lastM = rows[rows.length - 1].i;
+    const minGap = 52 / x.step();
+    const annualT = IX.evenTicks(rows.filter(r => r.kind === 'annual').map(r => r.i), (firstM) * x.step(), 48).filter(i => firstM - i >= minGap);
+    const ticks = annualT.concat([firstM]).concat(lastM - firstM >= minGap ? [lastM] : []);
+    s.append('g').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).tickValues(ticks).tickFormat(i => rows[i].kind === 'annual' ? IX.fy(rows[i].period) : IX.mon(IX.parseM(rows[i].period)))).call(IX.axisStyle);
+    const t = IX.tip(el);
+    s.append('g').selectAll('rect').data(rows).join('rect').attr('x', r => x(r.i)).attr('width', x.bandwidth()).attr('y', r => y(r.brent_share_pct)).attr('height', r => y(0) - y(r.brent_share_pct)).attr('rx', 2)
+      .attr('fill', r => r.kind === 'monthly' ? C[0] : 'var(--cds-chart-muted)')
+      .on('mousemove', (e, r) => t.show(e, r.label, [['', 'Brent share', IX.fmt1(r.brent_share_pct) + '%']])).on('mouseleave', t.hide);
+    IX.legend(el, [['var(--cds-chart-muted)', 'Annual weight (set from the previous year)'], [C[0], 'Monthly weight, 2026']]);
+  }
+
+  function russia(el) {
+    const d = IX.prep(el, ['russia_share']); if (!d) return;
+    const rows = d[0];
+    const { s, w, h } = IX.svg(el, 280); const m = { t: 14, r: 8, b: 26, l: 34 };
+    const x = d3.scaleBand(rows.map(r => r.month), [m.l, w - m.r]).padding(0.35);
+    const y = d3.scaleLinear([0, 6], [h - m.b, m.t]);
+    s.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(6).tickSize(-(w - m.l - m.r))).call(IX.axisStyle).call(g => g.select('.domain').remove());
+    s.append('g').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).tickFormat(p => IX.mon(IX.parseM(p)))).call(IX.axisStyle);
+    const t = IX.tip(el);
+    const g = s.append('g').selectAll('g').data(rows).join('g')
+      .on('mousemove', (e, r) => t.show(e, IX.mon(IX.parseM(r.month)), [[C[1], 'Russia', r.russia_mbd + ' mb/d (' + r.share_pct + '%)'], ['var(--cds-chart-muted)', 'All other', r.other_mbd + ' mb/d']])).on('mouseleave', t.hide);
+    g.append('rect').attr('x', r => x(r.month)).attr('width', x.bandwidth()).attr('y', r => y(r.russia_mbd)).attr('height', r => y(0) - y(r.russia_mbd)).attr('fill', C[1]);
+    g.append('rect').attr('x', r => x(r.month)).attr('width', x.bandwidth()).attr('y', r => y(r.total_mbd)).attr('height', r => y(r.russia_mbd) - y(r.total_mbd)).attr('fill', 'var(--cds-chart-muted)');
+    g.append('text').attr('x', r => x(r.month) + x.bandwidth() / 2).attr('y', r => y(r.russia_mbd / 2)).attr('text-anchor', 'middle').attr('fill', 'var(--color-bg)').style('font-size', 'var(--cds-font-size-caption)').style('font-weight', 600).text(r => r.share_pct + '%');
+    IX.legend(el, [[C[1], 'Russia (priced off Dated Brent)'], ['var(--cds-chart-muted)', 'All other suppliers']]);
+  }
+
+  function sep(el) {
+    const d = IX.prep(el, ['suppliers']); if (!d) return;
+    const rows = d[0].filter(r => r.month === '2026-09').sort((a, b) => (a.supplier === 'Others') - (b.supplier === 'Others') || b.mbd - a.mbd);
+    const gc = { 'Russia (Brent-linked)': C[1], 'Gulf': C[3], 'Atlantic Basin': C[0], 'Other': 'var(--cds-chart-muted)' };
+    const rowH = 24, m = { t: 4, r: 44, b: 4, l: 98 };
+    const { s, w } = IX.svg(el, rows.length * rowH + m.t + m.b);
+    const x = d3.scaleLinear([0, d3.max(rows, r => r.mbd)], [m.l, w - m.r]);
+    const y = d3.scaleBand(rows.map(r => r.supplier), [m.t, rows.length * rowH + m.t]).padding(0.25);
+    const t = IX.tip(el);
+    s.append('g').selectAll('rect').data(rows).join('rect').attr('x', m.l).attr('y', r => y(r.supplier)).attr('height', y.bandwidth()).attr('width', r => x(r.mbd) - m.l).attr('rx', 4).attr('fill', r => gc[r.group])
+      .on('mousemove', (e, r) => t.show(e, r.supplier, [[gc[r.group], r.group, r.mbd + ' mb/d']])).on('mouseleave', t.hide);
+    s.append('g').selectAll('text').data(rows).join('text').attr('x', m.l - 6).attr('y', r => y(r.supplier) + y.bandwidth() / 2).attr('dy', '0.35em').attr('text-anchor', 'end').attr('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').text(r => r.supplier);
+    s.append('g').selectAll('text').data(rows).join('text').attr('x', r => x(r.mbd) + 5).attr('y', r => y(r.supplier) + y.bandwidth() / 2).attr('dy', '0.35em').attr('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text(r => r.mbd.toFixed(2));
+    IX.legend(el, [[C[1], 'Russia (Brent-linked)'], [C[3], 'Gulf (Dubai/Oman, official prices)'], [C[0], 'Atlantic Basin (Brent/WTI)'], ['var(--cds-chart-muted)', 'Other']]);
+  }
+
+  function quality(el) {
+    const d = IX.prep(el, ['quality']); if (!d) return;
+    const rows = d[0];
+    const { s, w, h } = IX.svg(el, 360); const m = { t: 14, r: 16, b: 38, l: 44 };
+    const x = d3.scaleLinear([0, 3.3], [m.l, w - m.r]);
+    const y = d3.scaleLinear([26, 44], [h - m.b, m.t]);
+    s.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(6).tickSize(-(w - m.l - m.r))).call(IX.axisStyle).call(g => g.select('.domain').remove());
+    s.append('g').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).ticks(6).tickFormat(v => v + '%')).call(IX.axisStyle);
+    s.append('text').attr('x', w - m.r).attr('y', h - 4).attr('text-anchor', 'end').attr('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text('Sulfur, % → sourer');
+    s.append('text').attr('x', m.l + 4).attr('y', m.t + 4).attr('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text('API gravity ↑ lighter');
+    const kc = { 'Brent basket': C[0], 'Dubai basket': C[3], 'Oman basket': C[3], 'Gulf': C[3], 'Russia': C[1], 'basket': 'var(--color-fg)' };
+    const bk = rows.filter(r => r.kind === 'basket');
+    const pre = bk.find(r => r.name.startsWith('Pre-war')), pap = bk.find(r => r.name.startsWith('Paper'));
+    if (pre && pap) s.append('line').attr('x1', x(pre.sulfur_pct)).attr('y1', y(pre.api)).attr('x2', x(pap.sulfur_pct)).attr('y2', y(pap.api)).attr('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '4 3');
+    const t = IX.tip(el);
+    const grades = rows.filter(r => r.kind !== 'basket');
+    s.append('g').selectAll('circle').data(grades).join('circle').attr('cx', r => x(r.sulfur_pct)).attr('cy', r => y(r.api)).attr('r', 5).attr('fill', r => kc[r.kind]).attr('opacity', 0.8)
+      .on('mousemove', (e, r) => t.show(e, r.name, [[kc[r.kind], r.kind, r.api + ' API, ' + r.sulfur_pct + '% S']])).on('mouseleave', t.hide);
+    if (w > 520) {
+      // label each grade, then move labels that would collide with a neighbour (same column of x) or a basket label
+      const labs = grades.map(r => ({ r, x: x(r.sulfur_pct) + 7, y: y(r.api) - 6 }));
+      const placed = [];
+      bk.forEach(r => placed.push({ x0: x(r.sulfur_pct) - 10, x1: x(r.sulfur_pct) + 10, y: y(r.api) + 4 }));
+      bk.forEach(r => placed.push({ x0: x(r.sulfur_pct) + 12, x1: x(r.sulfur_pct) + 12 + 7 * r.name.length, y: y(r.api) + (r.name.startsWith('Actual') ? 16 : -10) }));
+      labs.sort((a, b) => a.y - b.y).forEach(l => {
+        const wdt = 6.5 * l.r.name.length;
+        let tries = 0;
+        while (tries < 8 && placed.some(p => l.x < p.x1 && l.x + wdt > p.x0 && Math.abs(l.y - p.y) < 13)) { l.y += 13; tries++; }
+        placed.push({ x0: l.x, x1: l.x + wdt, y: l.y });
+      });
+      s.append('g').selectAll('text').data(labs).join('text').attr('x', l => l.x).attr('y', l => l.y).attr('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text(l => l.r.name);
+    }
+    const sym = d3.symbol(d3.symbolDiamond, 180);
+    s.append('g').selectAll('path').data(bk).join('path').attr('d', sym).attr('transform', r => `translate(${x(r.sulfur_pct)},${y(r.api)})`)
+      .attr('fill', r => r.name.startsWith('Actual') ? C[1] : r.name.startsWith('Paper') ? C[0] : 'var(--color-fg-muted)').attr('stroke', 'var(--color-panel)').attr('stroke-width', 2)
+      .on('mousemove', (e, r) => t.show(e, r.name, [['', '', r.api + ' API, ' + r.sulfur_pct + '% S']])).on('mouseleave', t.hide);
+    s.append('g').selectAll('text').data(bk).join('text').attr('x', r => x(r.sulfur_pct) + 12).attr('y', r => y(r.api) + (r.name.startsWith('Actual') ? 16 : -10)).attr('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').style('font-weight', 600).text(r => r.name);
+    IX.legend(el, [[C[0], 'Brent-basket grades'], [C[3], 'Dubai/Oman and Gulf grades'], [C[1], 'Urals and the actual Sep mix'], ['var(--color-fg-muted)', 'Pre-war basket']]);
+  }
+
+  function price(el) {
+    const d = IX.prep(el, ['basket_price']); if (!d) return;
+    const rows = d[0].map(r => ({ ...r, date: IX.parseM(r.month) }));
+    const { s, w, h } = IX.svg(el, 340); const m = { t: 24, r: 16, b: 26, l: 40 };
+    const x = d3.scaleUtc(d3.extent(rows, r => r.date), [m.l, w - m.r]);
+    const y = d3.scaleLinear([0, 140], [h - m.b, m.t]);
+    s.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(7).tickFormat(v => '$' + v).tickSize(-(w - m.l - m.r))).call(IX.axisStyle).call(g => g.select('.domain').remove());
+    s.append('g').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).ticks(Math.max(3, Math.floor(w / 110))).tickFormat(d3.utcFormat('%Y'))).call(IX.axisStyle);
+    const defs = s.append('defs'); const gid = 'ixg' + Math.random().toString(36).slice(2);
+    const lg = defs.append('linearGradient').attr('id', gid).attr('x1', 0).attr('x2', 0).attr('y1', 0).attr('y2', 1);
+    [[0, .26], [.25, .16], [.5, .08], [.75, .03], [1, 0]].forEach(([o, a]) => lg.append('stop').attr('offset', o).attr('style', `stop-color:${C[0]};stop-opacity:${a}`));
+    s.append('path').datum(rows).attr('d', d3.area().x(r => x(r.date)).y0(y(0)).y1(r => y(r.usd_bbl))).attr('fill', `url(#${gid})`);
+    s.append('path').datum(rows).attr('d', d3.line().x(r => x(r.date)).y(r => y(r.usd_bbl))).attr('fill', 'none').attr('stroke', C[0]).attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round');
+    const marks = rows.filter(r => (w < 640 ? ['2026-01', '2026-03', '2026-07', '2026-10'] : ['2020-04', '2022-06', '2026-01', '2026-03', '2026-07', '2026-10']).includes(r.month));
+    const lbl = { '2020-04': 'COVID low', '2022-06': '2022 spike', '2026-01': 'Jan 26', '2026-03': 'Hormuz closure', '2026-07': 'Jul 26', '2026-10': 'Oct 26 to date' };
+    s.append('g').selectAll('circle').data(marks).join('circle').attr('cx', r => x(r.date)).attr('cy', r => y(r.usd_bbl)).attr('r', 4).attr('fill', C[0]);
+    s.append('g').selectAll('text').data(marks).join('text').attr('x', r => x(r.date)).attr('y', r => y(r.usd_bbl) + (['2020-04', '2026-01', '2026-07'].includes(r.month) ? 16 : -9)).attr('text-anchor', r => ['2026-10', '2026-03'].includes(r.month) ? 'end' : 'middle').attr('dx', r => r.month === '2026-03' ? -8 : 0).attr('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').text(r => lbl[r.month] + ' $' + Math.round(r.usd_bbl));
+    const t = IX.tip(el), bis = d3.bisector(r => r.date).center;
+    const dot = s.append('circle').attr('r', 5).attr('fill', C[0]).attr('stroke', 'var(--color-panel)').attr('stroke-width', 2).style('display', 'none');
+    s.append('rect').attr('x', m.l).attr('y', m.t).attr('width', w - m.l - m.r).attr('height', h - m.t - m.b).attr('fill', 'transparent')
+      .on('mousemove', (e) => { const [mx] = d3.pointer(e); const r = rows[bis(rows, x.invert(mx))]; dot.style('display', null).attr('cx', x(r.date)).attr('cy', y(r.usd_bbl)); t.show(e, IX.mon(r.date), [['', 'Indian basket', '$' + r.usd_bbl.toFixed(2) + '/bbl']]); })
+      .on('mouseleave', () => { dot.style('display', 'none'); t.hide(); });
+  }
+
+  function table(id, src, cols) {
+    const el = document.getElementById(id), tb = el.querySelector('tbody');
+    const st = IX.status(src);
+    tb.replaceChildren();
+    if (st !== 'ok') return;
+    const key = el.dataset.rowKey;
+    dash.data(src).data.forEach(r => {
+      const tr = document.createElement('tr');
+      if (key) tr.dataset.key = r[key];
+      cols.forEach(([k, f, cls]) => { const td = document.createElement('td'); td.textContent = f ? f(r[k], r) : r[k]; if (cls) td.className = cls; tr.appendChild(td); });
+      tb.appendChild(tr);
+    });
+  }
+
+  function grades(el) {
+    const d = IX.prep(el, ['grade_yields']); if (!d) return;
+    const metric = document.getElementById('yield-metric').value;
+    const rows = d[0];
+    const gradesL = [...new Set(rows.map(r => r.grade))].sort((a, b) => d3.mean(rows.filter(r => r.grade === b), r => r[metric]) - d3.mean(rows.filter(r => r.grade === a), r => r[metric]));
+    const refs = ['Reliance', 'IOC', 'BPCL'];
+    const rc = { Reliance: C[0], IOC: C[2], BPCL: 'var(--cds-chart-muted)' };
+    const groupH = 40, m = { t: 6, r: 40, b: 24, l: 108 };
+    const { s, w, h } = IX.svg(el, gradesL.length * groupH + m.t + m.b);
+    const vals = rows.filter(r => refs.includes(r.refiner)).map(r => r[metric]);
+    const lo = metric === 'light_pct' ? 55 : Math.floor(d3.min(vals) - 3), hi = Math.ceil(d3.max(vals) + 2);
+    const x = d3.scaleLinear([lo, hi], [m.l, w - m.r]);
+    const y0 = d3.scaleBand(gradesL, [m.t, gradesL.length * groupH + m.t]).padding(0.15);
+    const y1 = d3.scaleBand(refs, [0, y0.bandwidth()]).padding(0.08);
+    s.append('g').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).ticks(6).tickFormat(v => v + '%').tickSize(-(h - m.t - m.b))).call(IX.axisStyle).call(g => g.select('.domain').remove());
+    const t = IX.tip(el);
+    const g = s.append('g').selectAll('g').data(gradesL).join('g').attr('transform', gr => `translate(0,${y0(gr)})`);
+    g.append('text').attr('x', m.l - 6).attr('y', y0.bandwidth() / 2).attr('dy', '0.35em').attr('text-anchor', 'end').attr('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').text(gr => gr);
+    g.selectAll('rect').data(gr => refs.map(rf => rows.find(r => r.grade === gr && r.refiner === rf))).join('rect')
+      .attr('x', m.l).attr('y', r => y1(r.refiner)).attr('height', y1.bandwidth()).attr('width', r => Math.max(0, x(r[metric]) - m.l)).attr('rx', 3).attr('fill', r => rc[r.refiner])
+      .on('mousemove', (e, r) => t.show(e, r.grade, refs.map(rf => { const q = rows.find(z => z.grade === r.grade && z.refiner === rf); return [rc[rf], rf, q[metric] + '%']; }))).on('mouseleave', t.hide);
+    g.selectAll('text.v').data(gr => refs.map(rf => rows.find(r => r.grade === gr && r.refiner === rf))).join('text').attr('class', 'v')
+      .attr('x', r => x(r[metric]) + 4).attr('y', r => y1(r.refiner) + y1.bandwidth() / 2).attr('dy', '0.35em').attr('fill', 'var(--color-fg-muted)').style('font-size', '10px').text(r => Math.round(r[metric]));
+    IX.legend(el, [[C[0], 'Reliance, HPCL, Nayara (all full conversion)'], [C[2], 'IOC (75% full conversion)'], ['var(--cds-chart-muted)', 'BPCL (a third simple: Mumbai)']]);
+  }
+
+  function slate(el) {
+    const d = IX.prep(el, ['full_conversion_slate']); if (!d) return;
+    const keys = [['lpg', 'LPG'], ['petrol', 'Petrol / naphtha'], ['jet', 'Jet / kerosene'], ['diesel', 'Diesel'], ['fuel_oil', 'Fuel oil'], ['petcoke', 'Petcoke'], ['fuel_loss', 'Fuel and loss']];
+    const kc = { lpg: C[4], petrol: C[0], jet: C[2], diesel: C[3], fuel_oil: C[1], petcoke: C[5], fuel_loss: 'var(--cds-chart-muted)' };
+    const rows = d[0].slice().sort((a, b) => b.diesel - a.diesel);
+    const rowH = 26, m = { t: 4, r: 8, b: 22, l: 92 };
+    const { s, w, h } = IX.svg(el, rows.length * rowH + m.t + m.b);
+    const x = d3.scaleLinear([0, 100], [m.l, w - m.r]);
+    const y = d3.scaleBand(rows.map(r => r.grade), [m.t, rows.length * rowH + m.t]).padding(0.2);
+    s.append('g').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).ticks(5).tickFormat(v => v + '%')).call(IX.axisStyle);
+    const t = IX.tip(el);
+    rows.forEach(r => {
+      let acc = 0; const tot = keys.reduce((a, [k]) => a + r[k], 0);
+      keys.forEach(([k]) => {
+        const v = r[k] / tot * 100;
+        s.append('rect').attr('x', x(acc)).attr('width', Math.max(0, x(acc + v) - x(acc))).attr('y', y(r.grade)).attr('height', y.bandwidth()).attr('fill', kc[k])
+          .on('mousemove', (e) => t.show(e, r.grade + ' at full conversion', keys.map(([kk, lab]) => [kc[kk], lab, r[kk] + '%']))).on('mouseleave', t.hide);
+        acc += v;
+      });
+      s.append('text').attr('x', m.l - 6).attr('y', y(r.grade) + y.bandwidth() / 2).attr('dy', '0.35em').attr('text-anchor', 'end').attr('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').text(r.grade);
+    });
+    IX.legend(el, keys.map(([k, l]) => [kc[k], l]));
+  }
+
+  function accuracy(el) {
+    const d = IX.prep(el, ['accuracy']); if (!d) return;
+    const rows = d[0];
+    const rowH = 34, m = { t: 4, r: 40, b: 22, l: 84 };
+    const { s, w, h } = IX.svg(el, rows.length * rowH + m.t + m.b);
+    const x = d3.scaleLinear([60, 90], [m.l, w - m.r]);
+    const y = d3.scaleBand(rows.map(r => r.refinery), [m.t, rows.length * rowH + m.t]).padding(0.3);
+    s.append('g').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).ticks(6).tickFormat(v => v + '%').tickSize(-(h - m.t - m.b))).call(IX.axisStyle).call(g => g.select('.domain').remove());
+    const t = IX.tip(el);
+    const g = s.append('g').selectAll('g').data(rows).join('g').attr('transform', r => `translate(0,${y(r.refinery) + y.bandwidth() / 2})`)
+      .on('mousemove', (e, r) => t.show(e, r.refinery + ' (' + r.model_type + ')', [[C[0], 'Actual', r.actual_pct + '%'], [C[1], 'Model', r.model_pct + '%'], ['', 'Gap', '+' + (r.model_pct - r.actual_pct).toFixed(1) + ' pts']])).on('mouseleave', t.hide);
+    g.append('line').attr('x1', r => x(r.actual_pct)).attr('x2', r => x(r.model_pct)).attr('stroke', 'var(--cds-chart-reference)').attr('stroke-width', 2);
+    g.append('circle').attr('cx', r => x(r.actual_pct)).attr('r', 6).attr('fill', C[0]);
+    g.append('circle').attr('cx', r => x(r.model_pct)).attr('r', 6).attr('fill', C[1]);
+    g.append('text').attr('x', m.l - 6).attr('dy', '0.35em').attr('text-anchor', 'end').attr('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').text(r => r.refinery);
+    g.append('text').attr('x', r => x(r.model_pct) + 10).attr('dy', '0.35em').attr('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text(r => '+' + (r.model_pct - r.actual_pct).toFixed(1));
+    IX.legend(el, [[C[0], 'PPAC actual'], [C[1], 'Model, Gulf sour crude']]);
+  }
+
+  function changes(el) {
+    const d = IX.prep(el, ['export_change']); if (!d) return;
+    const rows = d[0];
+    const rowH = 30, m = { t: 4, r: 46, b: 22, l: 134 };
+    const { s, w, h } = IX.svg(el, rows.length * rowH + m.t + m.b);
+    const ext = d3.max(rows, r => Math.abs(r.change_pct)) * 1.1;
+    const x = d3.scaleLinear([-ext * 1.35, ext], [m.l, w - m.r]);
+    const y = d3.scaleBand(rows.map(r => r.product), [m.t, rows.length * rowH + m.t]).padding(0.25);
+    s.append('g').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).ticks(5).tickFormat(v => v + '%')).call(IX.axisStyle);
+    s.append('line').attr('x1', x(0)).attr('x2', x(0)).attr('y1', m.t).attr('y2', h - m.b).attr('stroke', 'var(--cds-chart-axis)');
+    const col = r => r.product === 'Jet fuel' ? C[0] : r.change_pct > 0 ? C[1] : 'var(--cds-chart-muted)';
+    s.append('g').selectAll('rect').data(rows).join('rect').attr('x', r => Math.min(x(0), x(r.change_pct))).attr('width', r => Math.abs(x(r.change_pct) - x(0))).attr('y', r => y(r.product)).attr('height', y.bandwidth()).attr('rx', 4).attr('fill', col);
+    s.append('g').selectAll('text').data(rows).join('text').attr('x', m.l - 6).attr('y', r => y(r.product) + y.bandwidth() / 2).attr('dy', '0.35em').attr('text-anchor', 'end').attr('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').text(r => r.product);
+    s.append('g').selectAll('text').data(rows).join('text').attr('x', r => x(r.change_pct) + (r.change_pct >= 0 ? 5 : -5)).attr('y', r => y(r.product) + y.bandwidth() / 2).attr('dy', '0.35em').attr('text-anchor', r => r.change_pct >= 0 ? 'start' : 'end').attr('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').style('font-weight', 600).text(r => (r.change_pct > 0 ? '+' : '') + r.change_pct + '%');
+  }
+
+  function trade(el) {
+    const d = IX.prep(el, ['monthly']); if (!d) return;
+    const rows = d[0].map(r => ({ ...r, date: IX.parseM(r.month) }));
+    const series = [['diesel_exports_kt', 'Diesel exports', C[3]], ['petrol_exports_kt', 'Petrol exports', C[0]], ['lpg_imports_kt', 'LPG imports', C[4]], ['jet_exports_kt', 'Jet exports', C[2]], ['fuel_oil_exports_kt', 'Fuel oil exports', C[1]]];
+    const { s, w, h } = IX.svg(el, 280); const m = { t: 14, r: 106, b: 26, l: 44 };
+    const x = d3.scalePoint(rows.map(r => r.month), [m.l, w - m.r]);
+    const y = d3.scaleLinear([0, d3.max(rows, r => d3.max(series, ([k]) => r[k])) * 1.1], [h - m.b, m.t]).nice();
+    s.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickFormat(d3.format(',')).tickSize(-(w - m.l - m.r))).call(IX.axisStyle).call(g => g.select('.domain').remove());
+    s.append('g').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).tickFormat(p => IX.monShort(IX.parseM(p)))).call(IX.axisStyle);
+    const ends = [];
+    series.forEach(([k, lab, c]) => {
+      s.append('path').datum(rows).attr('d', d3.line().x(r => x(r.month)).y(r => y(r[k]))).attr('fill', 'none').attr('stroke', c).attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round');
+      ends.push({ y: y(rows[rows.length - 1][k]), lab, c });
+    });
+    ends.sort((a, b) => a.y - b.y); for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 13) ends[i].y = ends[i - 1].y + 13;
+    s.append('g').selectAll('text').data(ends).join('text').attr('x', w - m.r + 6).attr('y', e => e.y).attr('dy', '0.35em').attr('fill', e => e.c).style('font-size', 'var(--cds-font-size-caption)').text(e => e.lab);
+    const t = IX.tip(el);
+    s.append('g').selectAll('rect').data(rows).join('rect').attr('x', r => x(r.month) - (x.step() / 2)).attr('width', x.step()).attr('y', m.t).attr('height', h - m.t - m.b).attr('fill', 'transparent')
+      .on('mousemove', (e, r) => t.show(e, IX.mon(r.date), series.map(([k, lab, c]) => [c, lab, IX.fmt0(Math.round(r[k])) + ' kt']))).on('mouseleave', t.hide);
+  }
+
+  function cracks(el) {
+    const d = IX.prep(el, ['cracks', 'crack_avg']); if (!d) return;
+    const rows = d[0].map(r => ({ ...r, date: IX.parseM(r.month) })), base = d[1].find(r => r.period === 'FY2024-25');
+    const { s, w, h } = IX.svg(el, 340); const m = { t: 20, r: 96, b: 26, l: 40 };
+    const x = d3.scaleUtc(d3.extent(rows, r => r.date), [m.l, w - m.r]);
+    const lo = Math.min(0, d3.min(rows, r => Math.min(r.diesel_crack, r.petrol_crack)));
+    const y = d3.scaleLinear([lo, d3.max(rows, r => Math.max(r.diesel_crack, r.petrol_crack)) * 1.08], [h - m.b, m.t]).nice();
+    s.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(6).tickFormat(v => '$' + v).tickSize(-(w - m.l - m.r))).call(IX.axisStyle).call(g => g.select('.domain').remove());
+    s.append('g').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).ticks(Math.max(3, Math.floor(w / 110))).tickFormat(d3.utcFormat('%Y'))).call(IX.axisStyle);
+    const ser = [['diesel_crack', 'Diesel crack', C[0]], ['petrol_crack', 'Petrol crack', C[1]]];
+    const ends = [];
+    ser.forEach(([k, lab, c]) => {
+      s.append('path').datum(rows).attr('d', d3.line().x(r => x(r.date)).y(r => y(r[k]))).attr('fill', 'none').attr('stroke', c).attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round');
+      if (base) s.append('line').attr('x1', m.l).attr('x2', w - m.r).attr('y1', y(base[k])).attr('y2', y(base[k])).attr('stroke', c).attr('stroke-dasharray', '4 3').attr('opacity', 0.7);
+      const last = rows[rows.length - 1]; ends.push({ y: y(last[k]), t: lab + ' $' + Math.round(last[k]), c });
+    });
+    ends.sort((a, b) => a.y - b.y); for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 14) ends[i].y = ends[i - 1].y + 14;
+    s.append('g').selectAll('text').data(ends).join('text').attr('x', w - m.r + 6).attr('y', e => e.y).attr('dy', '0.35em').attr('fill', e => e.c).style('font-size', 'var(--cds-font-size-caption)').text(e => e.t);
+    const pk = rows.reduce((a, r) => r.diesel_crack > a.diesel_crack ? r : a, rows[0]);
+    s.append('circle').attr('cx', x(pk.date)).attr('cy', y(pk.diesel_crack)).attr('r', 4).attr('fill', C[0]);
+    s.append('text').attr('x', x(pk.date) - 8).attr('y', y(pk.diesel_crack) + 4).attr('text-anchor', 'end').attr('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').text(IX.mon(pk.date) + ': $' + Math.round(pk.diesel_crack));
+    const t = IX.tip(el), bis = d3.bisector(r => r.date).center;
+    const dot = s.append('g').style('display', 'none');
+    s.append('rect').attr('x', m.l).attr('y', m.t).attr('width', w - m.l - m.r).attr('height', h - m.t - m.b).attr('fill', 'transparent')
+      .on('mousemove', (e) => { const [mx] = d3.pointer(e); const r = rows[bis(rows, x.invert(mx))]; dot.style('display', null).selectAll('*').remove(); ser.forEach(([k, , c]) => dot.append('circle').attr('cx', x(r.date)).attr('cy', y(r[k])).attr('r', 4).attr('fill', c)); t.show(e, IX.mon(r.date), [[C[0], 'Diesel crack', '$' + r.diesel_crack.toFixed(1) + '/bbl'], [C[1], 'Petrol crack', '$' + r.petrol_crack.toFixed(1) + '/bbl']]); })
+      .on('mouseleave', () => { dot.style('display', 'none'); t.hide(); });
+    IX.legend(el, [[C[0], 'Diesel crack'], [C[1], 'Petrol crack'], ['var(--cds-chart-reference)', 'Dashed: FY2024-25 average']]);
+  }
+
+  // ---------- 2026 vs earlier-year range
+  const RGROUPS = ['Crude & prices', 'Product exports', 'Product imports'];
+  const MO = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const isCrack = (s) => /crack/i.test(s);
+  const fmtV = (v, u) => v === null || v === undefined ? '—' : (u === 'mb/d' ? v.toFixed(2) : u === '$/bbl' ? v.toFixed(1) : d3.format(',.0f')(v));
+  const dev = (r) => r.value_2026 === null ? null : (isCrack(r.series) ? r.value_2026 - r.avg : (r.avg ? (r.value_2026 / r.avg - 1) * 100 : null));
+  const devTxt = (r) => { const d = dev(r); if (d === null) return '—'; const v = Math.round(Math.abs(d)); const sg = v === 0 ? '±' : d > 0 ? '+' : '−'; return sg + (isCrack(r.series) ? '$' + v : v + '%'); };
+
+  function heat(el) {
+    const d = IX.prep(el, ['range_stats']); if (!d) return;
+    const rows = d[0];
+    const series = []; RGROUPS.forEach(g => [...new Set(rows.filter(r => r.group === g).map(r => r.series))].forEach(s => series.push({ g, s, u: rows.find(r => r.series === s).unit })));
+    const W = Math.max(320, el.clientWidth), narrow = W < 640, lw = narrow ? 118 : 170, rh = 22, gh = 22;
+    // show months up to the latest one with any 2026 value, so future months don't fill the grid with blanks
+    const lastM = d3.max(rows.filter(r => r.value_2026 !== null), r => r.month) || 12;
+    const cols = d3.range(1, lastM + 1), cw = (W - lw) / cols.length;
+    let y = 22; const pos = []; let lastG = null;
+    series.forEach(sr => { if (sr.g !== lastG) { pos.push({ head: sr.g, y }); y += gh; lastG = sr.g; } pos.push({ sr, y }); y += rh; });
+    const { s } = IX.svg(el, y + 4);
+    cols.forEach(m => s.append('text').attr('x', lw + (m - 0.5) * cw).attr('y', 14).attr('text-anchor', 'middle').attr('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text(narrow ? MO[m - 1][0] : MO[m - 1]));
+    const t = IX.tip(el);
+    pos.forEach(p => {
+      if (p.head) { s.append('text').attr('x', 0).attr('y', p.y + 15).attr('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').style('font-weight', 600).text(p.head); return; }
+      const { sr } = p;
+      s.append('text').attr('x', narrow ? 0 : 10).attr('y', p.y + 15).attr('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').text(sr.s + (narrow ? '' : ' (' + sr.u + ')'));
+      cols.forEach(m => {
+        const r = rows.find(q => q.series === sr.s && q.month === m); const dv = r ? dev(r) : null;
+        const x0 = lw + (m - 1) * cw + 1, y0 = p.y + 2, w = cw - 2, h = rh - 4;
+        if (!r || dv === null) {
+          const why = 'Not yet published';
+          s.append('rect').attr('x', x0 + 0.5).attr('y', y0 + 0.5).attr('width', w - 1).attr('height', h - 1).attr('rx', 3).attr('fill', 'none').attr('stroke', 'var(--cds-chart-axis)').attr('stroke-dasharray', '3 3')
+            .on('mousemove', (e) => t.show(e, sr.s + ', ' + MO[m - 1] + ' 2026', [['', '', why]])).on('mouseleave', t.hide);
+          return;
+        }
+        const scale = isCrack(sr.s) ? Math.min(1, Math.abs(dv) / 40) : Math.min(1, Math.abs(dv) / 60);
+        const out = r.position !== 'within range';
+        s.append('rect').attr('x', x0).attr('y', y0).attr('width', w).attr('height', h).attr('rx', 3).attr('fill', dv >= 0 ? C[0] : C[1]).attr('fill-opacity', 0.15 + 0.75 * scale)
+          .attr('stroke', out ? 'var(--color-fg)' : 'none').attr('stroke-width', out ? 1.5 : 0)
+          .on('mousemove', (e) => t.show(e, sr.s + ', ' + MO[m - 1] + ' 2026', [['', '2026', fmtV(r.value_2026, sr.u) + ' ' + sr.u], ['', r.years + ' average', fmtV(r.avg, sr.u)], ['', r.years + ' range', fmtV(r.min, sr.u) + ' to ' + fmtV(r.max, sr.u)], ['', 'Difference', devTxt(r) + ' · ' + r.position]])).on('mouseleave', t.hide);
+        if (cw > 34) s.append('text').attr('x', x0 + w / 2).attr('y', y0 + h / 2 + 4).attr('text-anchor', 'middle').attr('fill', scale > 0.55 ? 'var(--color-bg)' : 'var(--color-fg)').style('font-size', '10px').style('font-weight', out ? 700 : 400).style('pointer-events', 'none').text(devTxt(r));
+      });
+    });
+    const lg = document.getElementById('heat-legend'); lg.replaceChildren();
+    [[C[0], 'Above earlier-year average'], [C[1], 'Below'], ['', 'Outlined: outside the earlier-year range'], ['dashed', 'Dashed: not yet published']].forEach(([c, l]) => { const sp = document.createElement('span'); const i = document.createElement('i'); if (c === 'dashed') { i.style.border = '1.5px dashed var(--cds-chart-axis)'; i.style.background = 'transparent'; } else if (c) i.style.background = c; else { i.style.border = '1.5px solid var(--color-fg)'; i.style.background = 'transparent'; } sp.append(i, document.createTextNode(l)); lg.appendChild(sp); });
+  }
+
+  function chips() {
+    const wrap = document.getElementById('range-chips'); const cur = RGROUPS.includes(dash.params().rgroup) ? dash.params().rgroup : RGROUPS[0];
+    if (!wrap.children.length) RGROUPS.forEach(g => { const b = document.createElement('button'); b.type = 'button'; b.className = 'ix-tab'; b.textContent = g; b.addEventListener('click', () => dash.setParams({ rgroup: g })); wrap.appendChild(b); });
+    [...wrap.children].forEach(b => b.setAttribute('aria-selected', String(b.textContent === cur)));
+    document.getElementById('range-detail-title').textContent = 'Monthly detail: ' + cur;
+    return cur;
+  }
+
+  function smallMult(el) {
+    const grp = chips();
+    const d = IX.prep(el, ['range_stats']); if (!d) return;
+    const rows = d[0].filter(r => r.group === grp);
+    const items = [...new Set(rows.map(r => r.series))];
+    const W = Math.max(300, el.clientWidth), cols = W > 980 ? 3 : W > 620 ? 2 : 1;
+    const gx = 56, gy = 62, ph = 130, pw = (W - (cols - 1) * gx - 60) / cols;
+    const H = Math.ceil(items.length / cols) * (ph + gy) + 10;
+    const { s } = IX.svg(el, H);
+    const t = IX.tip(el);
+    items.forEach((it, k) => {
+      const rs = rows.filter(r => r.series === it).sort((a, b) => a.month - b.month), unit = rs[0].unit, prevY = rs[0].prev_year;
+      const ox = 44 + (k % cols) * (pw + gx), oy = 36 + Math.floor(k / cols) * (ph + gy);
+      const vals = rs.flatMap(r => [r.min, r.max, r.value_2026, r.prev]).filter(v => v !== null && v !== undefined);
+      let lo = Math.min(...vals), hi = Math.max(...vals); const pad = (hi - lo) * 0.12 || 1; lo -= pad; hi += pad;
+      if (lo > 0 && lo < (hi - lo) * 0.6) lo = 0;
+      const x = d3.scaleLinear([1, 12], [0, pw]), y = d3.scaleLinear([lo, hi], [ph, 0]).nice();
+      const g = s.append('g').attr('transform', `translate(${ox},${oy})`);
+      const cur = rs.filter(r => r.value_2026 !== null), last = cur[cur.length - 1];
+      g.append('text').attr('x', -38).attr('y', -20).attr('fill', 'var(--color-fg)').style('font-size', '12px').style('font-weight', 600).text(it);
+      g.append('text').attr('x', -38).attr('y', -6).attr('fill', 'var(--color-fg-muted)').style('font-size', '10px').text(unit);
+      if (last) g.append('text').attr('x', pw).attr('y', -6).attr('text-anchor', 'end').attr('fill', last.position === 'within range' ? 'var(--color-fg-muted)' : 'var(--color-fg)').style('font-size', '11px').style('font-weight', last.position === 'within range' ? 400 : 600).text(MO[last.month - 1] + ': ' + devTxt(last) + ' vs avg');
+      y.ticks(3).forEach(tk => { g.append('line').attr('x1', 0).attr('x2', pw).attr('y1', y(tk)).attr('y2', y(tk)).attr('stroke', 'var(--cds-chart-grid)'); g.append('text').attr('x', -4).attr('y', y(tk) + 3).attr('text-anchor', 'end').attr('fill', 'var(--color-fg-muted)').style('font-size', '9px').text(unit === 'mb/d' ? tk.toFixed(1) : d3.format('~s')(tk)); });
+      g.append('path').datum(rs).attr('fill', 'var(--cds-chart-muted)').attr('fill-opacity', 0.45).attr('d', d3.area().x(r => x(r.month)).y0(r => y(r.min)).y1(r => y(r.max)));
+      g.append('path').datum(rs).attr('fill', 'none').attr('stroke', 'var(--color-fg-muted)').attr('stroke-width', 1.2).attr('stroke-dasharray', '4 3').attr('d', d3.line().x(r => x(r.month)).y(r => y(r.avg)));
+      g.append('path').datum(rs.filter(r => r.prev !== null)).attr('fill', 'none').attr('stroke', 'var(--cds-chart-muted)').attr('stroke-width', 1.5).attr('d', d3.line().x(r => x(r.month)).y(r => y(r.prev)));
+      g.append('path').datum(cur).attr('fill', 'none').attr('stroke', C[0]).attr('stroke-width', 2.2).attr('stroke-linejoin', 'round').attr('d', d3.line().x(r => x(r.month)).y(r => y(r.value_2026)));
+      cur.forEach(r => g.append('circle').attr('cx', x(r.month)).attr('cy', y(r.value_2026)).attr('r', r.position === 'within range' ? 2.5 : 3.5).attr('fill', r.position === 'within range' ? C[0] : 'var(--color-panel)').attr('stroke', C[0]).attr('stroke-width', r.position === 'within range' ? 0 : 2));
+      [1, 4, 7, 10].forEach(mo => g.append('text').attr('x', x(mo)).attr('y', ph + 13).attr('text-anchor', 'middle').attr('fill', 'var(--color-fg-muted)').style('font-size', '9px').text(MO[mo - 1]));
+      g.selectAll('rect.hit').data(rs).join('rect').attr('class', 'hit').attr('x', r => x(r.month) - pw / 24).attr('width', pw / 12).attr('y', 0).attr('height', ph).attr('fill', 'transparent')
+        .on('mousemove', (e, r) => t.show(e, it + ', ' + MO[r.month - 1], [[C[0], '2026', r.value_2026 === null ? 'not yet published' : fmtV(r.value_2026, unit) + ' ' + unit + ' (' + devTxt(r) + ' vs avg)'], ['var(--cds-chart-muted)', String(prevY), fmtV(r.prev, unit)], ['', r.years + ' average', fmtV(r.avg, unit)], ['', r.years + ' range', fmtV(r.min, unit) + ' to ' + fmtV(r.max, unit)]])).on('mouseleave', t.hide);
+    });
+  }
+
+  // scenario chart
+  const scenSel = document.getElementById('scen-pick');
+  scenSel.addEventListener('change', () => dash.setParams({ scenario: scenSel.value }));
+  function scen(el) {
+    const d = IX.prep(el, ['scenario_change']); if (!d) return;
+    const all = d[0];
+    const names = [...new Set(all.map(r => r.scenario))].filter(n => !n.startsWith('Sep 2026'));
+    if (scenSel.options.length !== names.length) scenSel.replaceChildren(...names.map(n => new Option(n, n)));
+    const pick = dash.params().scenario && names.includes(dash.params().scenario) ? dash.params().scenario : 'No Russia, Atlantic replaces';
+    scenSel.value = pick;
+    const rows = all.filter(r => r.scenario === pick);
+    const rowH = 30, m = { t: 4, r: 52, b: 22, l: 120 };
+    const { s, w, h } = IX.svg(el, rows.length * rowH + m.t + m.b);
+    const ext = Math.max(50, d3.max(all.filter(r => !r.scenario.startsWith('Sep')), r => Math.abs(r.change_kt)) * 1.1);
+    const x = d3.scaleLinear([-ext * 1.35, ext], [m.l, w - m.r]);
+    const y = d3.scaleBand(rows.map(r => r.product), [m.t, rows.length * rowH + m.t]).padding(0.25);
+    s.append('g').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).ticks(5).tickFormat(d3.format('+,'))).call(IX.axisStyle);
+    s.append('line').attr('x1', x(0)).attr('x2', x(0)).attr('y1', m.t).attr('y2', h - m.b).attr('stroke', 'var(--cds-chart-axis)');
+    const t = IX.tip(el);
+    s.append('g').selectAll('rect').data(rows).join('rect').attr('x', r => Math.min(x(0), x(r.change_kt))).attr('width', r => Math.abs(x(r.change_kt) - x(0))).attr('y', r => y(r.product)).attr('height', y.bandwidth()).attr('rx', 4)
+      .attr('fill', r => r.change_kt >= 0 ? C[0] : C[1])
+      .on('mousemove', (e, r) => t.show(e, r.product, [['', 'Level', IX.fmt0(r.level_kt) + ' kt/month'], ['', 'Change vs Sep 2026', (r.change_kt > 0 ? '+' : '') + IX.fmt0(r.change_kt) + ' kt/month']])).on('mouseleave', t.hide);
+    s.append('g').selectAll('text').data(rows).join('text').attr('x', m.l - 6).attr('y', r => y(r.product) + y.bandwidth() / 2).attr('dy', '0.35em').attr('text-anchor', 'end').attr('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').text(r => r.product);
+    s.append('g').selectAll('text.v').data(rows).join('text').attr('class', 'v').attr('x', r => x(r.change_kt) + (r.change_kt >= 0 ? 5 : -5)).attr('y', r => y(r.product) + y.bandwidth() / 2).attr('dy', '0.35em').attr('text-anchor', r => r.change_kt >= 0 ? 'start' : 'end').attr('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').style('font-weight', 600).text(r => (r.change_kt > 0 ? '+' : '') + IX.fmt0(r.change_kt));
+  }
+
+  document.getElementById('yield-metric').addEventListener('change', () => IX.redraw());
+
+  const pages = {
+    overview: () => { ratioMonthly(document.getElementById('ov-ratio-chart')); proof(document.getElementById('ov-proof-chart'), 280); },
+    crude: () => { crudeAnnual(document.getElementById('crude-annual-chart')); crudeMonthly(document.getElementById('crude-monthly-chart')); ratioLong(document.getElementById('ratio-long-chart')); russia(document.getElementById('russia-chart')); sep(document.getElementById('sep-chart')); quality(document.getElementById('quality-chart')); },
+    price: () => {
+      price(document.getElementById('price-chart')); cracks(document.getElementById('cracks-chart'));
+      const n0 = IX.fmt0, f1 = IX.fmt1;
+      table('bill-table', 'bill', [['month', v => IX.mon(IX.parseM(v))], ['crude_cr', n0], ['product_imports_cr', n0], ['product_exports_cr', n0], ['net_cr', n0], ['inr_per_usd', f1], ['net_usd_bn', f1], ['crude_usd_per_bbl', n0]]);
+    },
+    refining: () => {
+      table('refiners-table', 'refiners', [['refiner'], ['capacity_mt', IX.fmt1], ['simple_pct'], ['cracking_pct'], ['full_pct'], ['how_they_buy', null, 'wrap']]);
+      grades(document.getElementById('grade-chart')); slate(document.getElementById('slate-chart')); accuracy(document.getElementById('acc-chart'));
+    },
+    products: () => {
+      proof(document.getElementById('proof-chart'), 360); changes(document.getElementById('change-chart')); trade(document.getElementById('trade-chart'));
+      table('demand-table', 'demand', [['region'], ['lpg_kt', IX.fmt0], ['petrol_kt', IX.fmt0], ['diesel_kt', IX.fmt0], ['jet_kt', IX.fmt0]]);
+      table('gas-table', 'gas_change', [['metric'], ['aug_2025', IX.fmt0], ['aug_2026', IX.fmt0], ['change_pct', v => (v > 0 ? '+' : '') + v.toFixed(1)]]);
+    },
+    range: () => { heat(document.getElementById('heat-chart')); smallMult(document.getElementById('sm-chart')); },
+    scenarios: () => scen(document.getElementById('scen-chart')),
+    notes: () => {}
+  };
+
+  function fillText() {
+    // small text fills for marked spans
+    const fm = (src, field, where, f) => document.querySelectorAll(`[data-source="${src}"][data-field="${field}"]` + (where ? `[data-where="${where}"]` : '')).forEach(el => {
+      const d = dash.data(src); if (d.status !== 'ok') { el.textContent = '—'; return; }
+      let row;
+      if (where) { const parts = where.split('&').map(p => p.split('=')); row = d.data.find(r => parts.every(([a, b]) => String(r[a]) === b)); }
+      else row = d.data[+(el.dataset.row || 0)];
+      el.textContent = row ? f(row[field]) : '—';
+    });
+    const pct0 = v => Math.round(v) + '%', sgn = v => (v > 0 ? '+' : '') + v + '%';
+    fm('kpi', 'record_mbd', null, v => v.toFixed(2));
+    fm('basket_price', 'usd_bbl', 'month=2026-10', v => '$' + v.toFixed(0));
+    fm('basket_price', 'usd_bbl', 'month=2026-01', v => '$' + v.toFixed(0));
+    ['2026-10', '2026-07', '2025-26'].forEach(p => fm('basket_ratio', 'brent_share_pct', 'period=' + p, pct0));
+    ['2026-09', '2026-07'].forEach(p => fm('russia_share', 'share_pct', 'month=' + p, pct0));
+    ['Jet fuel', 'Fuel oil'].forEach(p => fm('export_change', 'change_pct', 'product=' + p, sgn));
+    fm('suppliers', 'mbd', 'month=2026-09&supplier=Russia', v => v.toFixed(2));
+    fm('discount_cost', 'usd_bn_per_year', null, v => v.toFixed(1));
+    fm('cracks', 'diesel_crack', 'month=2026-10', v => '$' + v.toFixed(0));
+    fm('crack_avg', 'diesel_crack', 'period=FY2024-25', v => '$' + v.toFixed(0));
+    document.querySelectorAll('.ix-kpi .v[data-source="kpi"][data-field="avg_mbd"]').forEach(el => { const d = dash.data('kpi'); el.textContent = d.status === 'ok' ? d.data[0].avg_mbd.toFixed(2) : '—'; });
+    const tk = document.getElementById('takeaway');
+    const k = dash.data('kpi'), ec = dash.data('export_change'), rs = dash.data('russia_share');
+    if (k.status === 'ok' && ec.status === 'ok' && rs.status === 'ok') {
+      tk.classList.remove('dash-skeleton');
+      const jet = ec.data.find(r => r.product === 'Jet fuel').change_pct, fo = ec.data.find(r => r.product === 'Fuel oil').change_pct;
+      const jul = rs.data.find(r => r.month === '2026-07').share_pct;
+      tk.textContent = `India kept importing ${k.data[0].avg_mbd.toFixed(2)} million b/d through the Hormuz shock. Its crude basket swung to Brent on paper, but the swing was mostly Russian Urals (${jul}% of imports in July), so the slate stayed medium sour: jet exports are ${jet}% and fuel oil exports ${fo > 0 ? '+' : ''}${fo}% against FY2024-25. Indian refiners now pay Brent-linked prices for Dubai-quality crude, and that is the opening for hedging, financing and supply.`;
+    } else if ([k, ec, rs].some(x => x.status === 'error')) { tk.classList.remove('dash-skeleton'); tk.textContent = '—'; }
+  }
+
+  IX.redraw = function () { fillText(); (pages[IX.current] || (() => {}))(); };
+  dash.onData(IX.redraw);
+
+  const named = document.getElementById(location.hash.slice(1));
+  if (named && !named.classList.contains('ix-page')) named.scrollIntoView();
+})();
+</script>
+
+</main>
+
+<footer class="site-foot" id="sources">
+  <h2>Data sources</h2>
+  <ul class="src" id="src-list"></ul>
+  <div class="by">
+    <span>Built by Perion · last built 2026-10-28</span>
+    <span>Figures are fixed copies of the sources listed; model outputs are indicative.</span>
+    <button class="theme-btn" id="theme-btn" type="button">Switch theme</button>
+  </div>
+</footer>
+<script>
+(function () {
+  const ul = document.getElementById('src-list'), M = window.DASH_META || {};
+  Object.keys(M).sort((a, b) => M[a].title.localeCompare(M[b].title)).forEach((id) => {
+    const m = M[id], li = document.createElement('li'), b = document.createElement('b'), p = document.createElement('div'), a = document.createElement('a');
+    b.textContent = m.title; p.textContent = m.description;
+    a.href = m.file; a.textContent = 'Download ' + m.file.split('/').pop(); a.setAttribute('download', '');
+    li.append(b, p, a); ul.appendChild(li);
+  });
+  const btn = document.getElementById('theme-btn'), root = document.documentElement;
+  btn.addEventListener('click', () => {
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+  });
+})();
+</script>
+</body>
+</html>

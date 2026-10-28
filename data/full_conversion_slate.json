@@ -1,0 +1,92 @@
+[
+{
+"grade": "Murban",
+"lpg": 3.1,
+"petrol": 29.7,
+"jet": 23.4,
+"diesel": 32.0,
+"fuel_oil": 1.2,
+"petcoke": 2.2,
+"fuel_loss": 8.4
+},
+{
+"grade": "Upper Zakum",
+"lpg": 4.3,
+"petrol": 28.3,
+"jet": 18.0,
+"diesel": 32.0,
+"fuel_oil": 1.4,
+"petcoke": 7.1,
+"fuel_loss": 9.0
+},
+{
+"grade": "Oman",
+"lpg": 3.7,
+"petrol": 27.4,
+"jet": 17.0,
+"diesel": 34.3,
+"fuel_oil": 1.5,
+"petcoke": 6.9,
+"fuel_loss": 9.3
+},
+{
+"grade": "WTI Light",
+"lpg": 3.2,
+"petrol": 37.6,
+"jet": 22.6,
+"diesel": 27.1,
+"fuel_oil": 0.9,
+"petcoke": 0.6,
+"fuel_loss": 7.9
+},
+{
+"grade": "Bonny Light",
+"lpg": 2.9,
+"petrol": 27.9,
+"jet": 20.3,
+"diesel": 37.9,
+"fuel_oil": 1.2,
+"petcoke": 1.6,
+"fuel_loss": 8.3
+},
+{
+"grade": "Mero",
+"lpg": 3.0,
+"petrol": 27.5,
+"jet": 16.2,
+"diesel": 37.5,
+"fuel_oil": 1.7,
+"petcoke": 4.4,
+"fuel_loss": 9.6
+},
+{
+"grade": "Bacalhau",
+"lpg": 3.8,
+"petrol": 28.3,
+"jet": 16.4,
+"diesel": 36.6,
+"fuel_oil": 1.6,
+"petcoke": 3.8,
+"fuel_loss": 9.2
+},
+{
+"grade": "Unity Gold",
+"lpg": 3.2,
+"petrol": 29.3,
+"jet": 18.5,
+"diesel": 34.5,
+"fuel_oil": 1.5,
+"petcoke": 4.1,
+"fuel_loss": 8.9
+},
+{
+"grade": "Pearl Sweet",
+"lpg": 3.5,
+"petrol": 28.6,
+"jet": 7.6,
+"diesel": 41.5,
+"fuel_oil": 1.9,
+"petcoke": 6.5,
+"fuel_loss": 10.4
+}
+]
